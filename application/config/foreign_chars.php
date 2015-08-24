@@ -1,14 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------
-| Foreign Characters
-| -------------------------------------------------------------------
-| This file contains an array of foreign characters for transliteration
-| conversion used by the Text helper
-|
-*/
 $foreign_characters = array(
 	'/ä|æ|ǽ/' => 'ae',
 	'/ö|œ/' => 'oe',
@@ -56,6 +48,7 @@ $foreign_characters = array(
 	'/ś|ŝ|ş|ș|š|ſ|σ|ς|с/' => 's',
 	'/Ț|Ţ|Ť|Ŧ|τ|Т/' => 'T',
 	'/ț|ţ|ť|ŧ|т/' => 't',
+	'/Þ|þ/' => 'th',
 	'/Ù|Ú|Û|Ũ|Ū|Ŭ|Ů|Ű|Ų|Ư|Ǔ|Ǖ|Ǘ|Ǚ|Ǜ|Ũ|Ủ|Ụ|Ừ|Ứ|Ữ|Ử|Ự|У/' => 'U',
 	'/ù|ú|û|ũ|ū|ŭ|ů|ű|ų|ư|ǔ|ǖ|ǘ|ǚ|ǜ|υ|ύ|ϋ|ủ|ụ|ừ|ứ|ữ|ử|ự|у/' => 'u',
 	'/Ý|Ÿ|Ŷ|Υ|Ύ|Ϋ|Ỳ|Ỹ|Ỷ|Ỵ|Й/' => 'Y',
