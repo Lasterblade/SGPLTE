@@ -6,10 +6,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
+	'hostname' => ''.getenv('IP').'',
+	'username' => ''.getenv('C9_USER').'',
 	'password' => '',
-	'database' => '',
+	'database' => 'provaonline',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
