@@ -3,47 +3,50 @@
 class Aluno_model extends CI_Model
 {
 
-     public function __construct()
-     {
+    private $idAluno;
+    private $objMatricula;
+    private $objPessoa;
+    private $objUsuario;
+
+    public function __construct()
+    {
         parent::__construct();    
-        //Faça sua mágica aqui
-     }
+    }
      
-     public function index()
-     {
-      
-     }
+    public function index()
+    {
+    }
     public function GetIdAluno()
     {
-        return $this->idAluno;
+       return $this->idAluno;
     }
     
-    public function SetIdAluno($idAluno_)
+    public function SetIdAluno($idAluno)
     {
-        $this->$idAluno = $idAluno_;
+        $this->idAluno = $idAluno;
     }
     
     public function GetObjMatricula()
     {
-        return $this->$objMatricula;
+        return $this->objMatricula;
     }
     
     public function SetObjMatricula($objMatricula_)
     {
-        $this->$objMatricula = $objMatricula_;
+        $this->objMatricula = $objMatricula_;
     }
     
     public function GetObjPessoa()
     {
-        return $this->$objPessoa;
+        return $this->objPessoa;
     }
     
     public function SetObjPessoa($objPessoa_)
     {
-        $this->$objPessoa = $objPessoa_;
+        $this->objPessoa = $objPessoa_;
     }
     
-    public function ConsultarAluno($nome)
+    public function ConsultarAluno()
     {
         /*
 			Autor: Donovan Sousa
@@ -56,12 +59,19 @@ class Aluno_model extends CI_Model
                            p.email,
                            p.data_nascimento 
                    from Aluno a inner join pessoa p
-                   on a.pessoa_idpessoa = p.idpessoa where p.nome like '%".$nome."%'";
+                   on a.pessoa_idpessoa = p.idpessoa where p.nome like '%".$objPessoa->nome."%'";
                    
          $query = $this->db->query($strSql);
-         
-         return $query;
     }
+    
+    public function CadastrarAluno_()
+    {
+       $strSql = "insert into aluno (idMatricula,idPessoa,idUsuario)
+       values(`$objMatricula->$idMatricula`,`$objPessoa->$idPessoa`,`$objUsuario->$idUsuario`)";
+        
+        $this->db->query($strSql);
+    }
+    
 }
 
 ?>

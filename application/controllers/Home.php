@@ -12,7 +12,7 @@ class Home extends CI_Controller
 	public function Aluno()
 	{
 		$this->load->view('/template/header');
-		$this->load->view('/aluno/index');
+		$this->load->view('/Paginas/consultar_Aluno');
 		$this->load->view('/template/footer');
 	}
 }

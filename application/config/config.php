@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['base_url'] = 'https://sgplte-lasterblade1.c9.io/';
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 $config['uri_protocol']	= 'REQUEST_URI';
 $config['url_suffix'] = '';
 $config['language']	= 'english';
@@ -24,7 +24,7 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 $config['error_views_path'] = '';
 $config['cache_path'] = '';
 $config['cache_query_string'] = FALSE;
-$config['encryption_key'] = 'k3hsaky32isaporw13';
+$config['encryption_key'] = 'vzh43MqxOoGQdEhbm0TwLShEfAjTvZJ7';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;

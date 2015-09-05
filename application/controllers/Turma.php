@@ -1,7 +1,6 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php if (! defined('BASEPATH')) exit('No direct Script access allowed');
 
-class Pessoa extends CI_Controller 
+class Turma extends CI_Controller 
 {
 	public function __construct()
 	{
@@ -10,7 +9,7 @@ class Pessoa extends CI_Controller
 	public function index()
 	{
 		$this->load->view('/template/header');
-	    $this->load->view('/Paginas/consultar_Pessoa');
+	    $this->load->view('/Paginas/consultar_Turma');
 	    $this->load->view('/template/footer');
 	}
 }
