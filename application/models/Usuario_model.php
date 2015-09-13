@@ -8,6 +8,7 @@ class Usuario_model extends CI_Model
     	private $login;
     	private $senha;
     	private $objPerfilUsuario;
+    	private $data_exclusao;
     
         public function __construct()
         {
@@ -52,7 +53,18 @@ class Usuario_model extends CI_Model
         public function SetobjPerfilUsuario($objPerfilUsuario)
         {
             $this->objPerfilUsuario = $objPerfilUsuario;
-        }   
+        }
+        
+        public function GetDataExclusao()
+        {
+            return $this->data_exclusao;
+        }
+        
+        public function SetDataExclusao($data_exclusao)
+        {
+            $this->data_exclusao = $data_exclusao;
+        }        
+        
  }
 
 ?>

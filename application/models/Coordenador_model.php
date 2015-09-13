@@ -8,6 +8,7 @@ class Coordenador_model extends CI_Model
     private $idCoordenador;
     private $objPessoa;
     private $objUsuario;
+    private $data_exclusao;
     
     public function __construct()
     {
@@ -44,6 +45,16 @@ class Coordenador_model extends CI_Model
     {
          $this->objUsuario = $objUsuario;
     }
+    
+        public function GetDataExclusao()
+        {
+            return $this->data_exclusao;
+        }
+        
+        public function SetDataExclusao($data_exclusao)
+        {
+            $this->data_exclusao = $data_exclusao;
+        }    
     
     public function CadastrarCoordenador()
     {

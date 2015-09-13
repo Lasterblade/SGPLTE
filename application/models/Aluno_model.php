@@ -7,6 +7,7 @@ class Aluno_model extends CI_Model
     private $objMatricula;
     private $objPessoa;
     private $objUsuario;
+    private $data_exclusao;
 
     public function __construct()
     {
@@ -45,6 +46,17 @@ class Aluno_model extends CI_Model
     {
         $this->objPessoa = $objPessoa_;
     }
+
+     public function GetDataExclusao()
+     {
+            return $this->data_exclusao;
+     }
+        
+    public function SetDataExclusao($data_exclusao)
+    {
+            $this->data_exclusao = $data_exclusao;
+    }    
+    
     
     public function ConsultarAluno()
     {

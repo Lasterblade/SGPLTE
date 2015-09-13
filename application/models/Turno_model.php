@@ -7,6 +7,7 @@ class Turno_model extends CI_Model
 {
 	private $idTurno;
 	private $descricao;
+	private $data_exclusao;
 	
 	public function __construct()
     {
@@ -32,6 +33,17 @@ class Turno_model extends CI_Model
     {
         $this->descricao = $descricao;
     }
+
+    public function GetDataExclusao()
+    {
+            return $this->data_exclusao;
+    }
+        
+    public function SetDataExclusao($data_exclusao)
+    {
+            $this->data_exclusao = $data_exclusao;
+    }
+    
 }
 
 ?>

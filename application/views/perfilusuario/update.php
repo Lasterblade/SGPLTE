@@ -12,11 +12,11 @@
             <li class="active">Perfil de Usuario</li>
           </ol>
         </section>
+        
         <!-- Main content -->
         <section class="content">
           <div class="row">
             <!-- left column -->
-            
             
             <div class="col-md-12">
               <!-- Horizontal Form -->
@@ -28,17 +28,17 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">     
                   
-                  <?php echo form_open('perfilusuario/atualizar'); ?>
+                  <?php echo form_open('perfilusuario/update/'.$editar->idperfilusuario); ?>
                   <?php echo validation_errors(); ?>
                   
                     <!-- text input -->
-                    <div class="form-group" action="atualizar">
+                    <div class="form-group" action="update">
                       <label>Id</label>
-                      <input type="text" class="form-control" name="id" placeholder="Numero ..." disabled="">
+                      <input type="text" class="form-control" name="id" value="<?php echo $editar->idperfilusuario; ?>" placeholder="Numero ..." disabled="">
                     </div>
                     <div class="form-group">
                       <label>Descrição</label>
-                      <input type="text" class="form-control" name="descricao" placeholder="Entre com a descrição ...">
+                      <input type="text" class="form-control" name="descricao" value="<?php echo $editar->descricao; ?>" placeholder="Entre com a descrição ...">
                     </div>
 
                    <div class="box-footer">

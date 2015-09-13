@@ -5,7 +5,7 @@ class Curso extends CI_Controller
 	public function __construct()
 	{
 	    parent::__construct();
-	    	   $this->load->library('form_validation');
+	    $this->load->library('form_validation');
 	}
 	public function index()
 	{
@@ -17,7 +17,7 @@ class Curso extends CI_Controller
 	public function cadastrar_curso()
 	{
 		$this->load->view('/template/header');
-	    $this->load->view('/paginas/cadastrar_curso');
+	    $this->load->view('/Paginas/cadastrar_curso');
 	    $this->load->view('/template/footer');
 	}
 	

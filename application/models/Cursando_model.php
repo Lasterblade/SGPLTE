@@ -9,6 +9,7 @@ if (! defined('BASEPATH')) exit('No direct Script access allowed');
     private $objAluno;
     private $objMatricula;
     private $objDisciplina;
+    private $data_exclusao;
    
     public function __construct()
     {
@@ -55,6 +56,17 @@ if (! defined('BASEPATH')) exit('No direct Script access allowed');
     {
         $this->objDisciplina = $objDisciplina;
     }
+
+        public function GetDataExclusao()
+        {
+            return $this->data_exclusao;
+        }
+        
+        public function SetDataExclusao($data_exclusao)
+        {
+            $this->data_exclusao = $data_exclusao;
+        }    
+    
 }
 
 ?>

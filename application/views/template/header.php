@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="wrapper">
       
       <header class="main-header">        <!-- Logo -->
-        <a href="index.html" class="logo">
+        <a href="<?php echo base_url();?>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>S</b>GP</span>
           <!-- logo for regular state and mobile devices -->
@@ -345,8 +345,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/Aluno/consultar"><i class="fa fa-circle-o"></i> Consultar</a></li>
-                <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
+                <li><a href="<?php echo base_url('/Aluno/consultar');?>"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                <li><a href="<?php echo base_url('/Aluno/cadastrar');?>"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
               </ul>
             </li>
             
@@ -367,9 +367,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Consultar</a></li>
-                <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Cadastrar</a></li>
-                <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Excluir</a></li>
+                <li><a href="<?php echo base_url('/Professor/Cadastrar');?>"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                <li><a href="<?php echo base_url('/Professor/Relatorios');?>"><i class="fa fa-circle-o"></i> Relatorios</a></li>
               </ul>
             </li>
             
@@ -380,10 +379,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-                <li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                <li><a href="<?php echo base_url('/Provas/Cadastrar');?>"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                <li><a href="<?php echo base_url('/Prvoas/Relatorios');?>"><i class="fa fa-circle-o"></i> Relatorios</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -393,23 +390,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                <li><a href="../UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                <li><a href="../UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                <li><a href="../UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                <li><a href="../UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                <li><a href="../UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+                <li><a href="<?php echo base_url('/Relatorios/Provas');?>"><i class="fa fa-circle-o"></i> Provas</a></li>
+                <li><a href="<?php echo base_url('/Relatorios/Professor');?>"><i class="fa fa-circle-o"></i> Professor</a></li>
+                <li><a href="<?php echo base_url('/Relatorios/Aluno');?>"><i class="fa fa-circle-o"></i> Aluno</a></li>
               </ul>
             </li>
-            <li class="treeview active">
+            <li class="treeview">
               <a href="#">
                 <i class="fa fa-edit"></i> <span>Disciplinas</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                <li><a href="advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                <li><a href="editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+                <li><a href="<?php echo base_url('/Disciplinas/Consultar');?>"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                <li><a href="<?php echo base_url('/Disciplinas/Relatorios');?>"><i class="fa fa-circle-o"></i> Relatorios</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -418,8 +411,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                <li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                <li><a href="<?php echo base_url('/Turmas/Consultar');?>"><i class="fa fa-circle-o"></i> Consultar</a></li>
+                <li><a href="<?php echo base_url('/Turmas/Relatorios');?>"><i class="fa fa-circle-o"></i> Relatorios</a></li>
               </ul>
             </li>
             <li>
@@ -472,7 +465,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
               </ul>
             </li>
-            <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">LABELS</li>
             <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
             <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>

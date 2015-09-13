@@ -13,6 +13,7 @@ class Perguntas_model extends CI_Model
     private $resposta03;
     private $resposta04;
     private $respostaCorreta;
+    private $data_exclusao;
 
     public function __construct()
     {
@@ -98,7 +99,19 @@ class Perguntas_model extends CI_Model
     public function SetRespostaCorreta($respostaCorreta)
     {
         $this->respostaCorreta = $respostaCorreta;
-    } 
+    }
+    
+        public function GetDataExclusao()
+        {
+            return $this->data_exclusao;
+        }
+        
+        public function SetDataExclusao($data_exclusao)
+        {
+            $this->data_exclusao = $data_exclusao;
+        }
+    
+    
     
 }
 

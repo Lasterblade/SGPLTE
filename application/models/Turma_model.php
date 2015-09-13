@@ -8,6 +8,7 @@ class Turma_model extends CI_Model
 	private $objTurno;
 	private $objCurso;
 	private $objPeriodo;
+	private $data_exclusao;
 	
 	
 	public function __construct()
@@ -54,7 +55,18 @@ class Turma_model extends CI_Model
     public function SetobjPeriodo($objPeriodo)
     {
             $this->objPeriodo = $objPeriodo;
-    }        
+    } 
+    
+        public function GetDataExclusao()
+        {
+            return $this->data_exclusao;
+        }
+        
+        public function SetDataExclusao($data_exclusao)
+        {
+            $this->data_exclusao = $data_exclusao;
+        }    
+    
 }
 
 ?>

@@ -10,15 +10,30 @@ create database provaonline;
 
 use provaonline;
 
+CREATE TABLE IF NOT EXISTS provaonline.periodo 
+(
+  idperiodo INT(11) primary key auto_increment ,
+  descricao VARCHAR(70) NOT NULL,
+  data_exclusao varchar(100) default null
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+insert into periodo values (1,'Primeiro periodo',null);
+insert into periodo values (2,'Segundo periodo',null);
+
+
 create table perfilusuario
 (
 	idperfilusuario int primary key auto_increment,
-	descricao varchar(50) not null
+	descricao varchar(50) not null,
+  data_exclusao varchar(100) default null
 );
 
-insert into perfilusuario values (1,'aluno');
-insert into perfilusuario values (2,'professor');
-insert into perfilusuario values (3,'coordenador');
+insert into perfilusuario values (1,'aluno',null);
+insert into perfilusuario values (2,'professor',null);
+insert into perfilusuario values (3,'coordenador',null);
 
 
 CREATE TABLE IF NOT EXISTS provaonline.usuario -- primeiro cadastra o usuário.
@@ -27,14 +42,15 @@ CREATE TABLE IF NOT EXISTS provaonline.usuario -- primeiro cadastra o usuário.
   login VARCHAR(45) NOT NULL ,
   senha VARCHAR(45) NOT NULL ,
   perfil INT(11) NOT NULL,
-	foreign key (perfil) references perfilusuario(idperfilusuario) 
+	foreign key (perfil) references perfilusuario(idperfilusuario),
+	data_exclusao varchar(100) default null
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
-insert into usuario  values (1,'donovan','123456',3); 
-insert into usuario values (2,'thiago','123456',3) ;
+insert into usuario  values (1,'donovan','123456',3,null);
+insert into usuario values (2,'thiago','123456',3,null);
 
 
 CREATE TABLE IF NOT EXISTS provaonline.pessoa  -- depois cadastra a pessoa.
@@ -46,20 +62,22 @@ CREATE TABLE IF NOT EXISTS provaonline.pessoa  -- depois cadastra a pessoa.
   endereco VARCHAR(70) NOT NULL ,
   cpf VARCHAR(15) NOT NULL ,
   email VARCHAR(70) NOT NULL ,
-  telefone VARCHAR(20) NOT NULL  
+  telefone VARCHAR(20) NOT NULL,
+  data_exclusao varchar(100) default null
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 insert into pessoa values 
-(1,'donovan muniz de sousa','M',19941201,'rua dos agronomos','12188899900','donovansousa@yahoo.com.br','26632663');
+(1,'donovan muniz de sousa','M',19941201,'rua dos agronomos','12188899900','donovansousa@yahoo.com.br','26632663',null);
 
 
 CREATE TABLE IF NOT EXISTS provaonline.curso 
 (
   idcurso INT(11) NOT NULL primary key auto_increment ,
-  descricao VARCHAR(45) NOT NULL
+  descricao VARCHAR(45) NOT NULL,
+  data_exclusao varchar(100) default null
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -67,7 +85,7 @@ COLLATE = utf8_general_ci;
 
 
 -- então insero um curso para me matricular.
-insert into curso values (1,'TADS');
+insert into curso values (1,'TADS',null);
 
 
 CREATE TABLE IF NOT EXISTS provaonline.matricula  -- aqui deve se utilizar Sequence, não por auto increment!
@@ -75,14 +93,15 @@ CREATE TABLE IF NOT EXISTS provaonline.matricula  -- aqui deve se utilizar Seque
   matricula INT(11) NOT NULL primary key,
   data_matricula date NOT NULL,
   idcurso int default null,
-  foreign key (idcurso) references curso(idcurso)
+  foreign key (idcurso) references curso(idcurso),
+  data_exclusao varchar(100) default null
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 -- então me matriculo.
-insert into matricula values (1,20150826,1);
+insert into matricula values (1,20150826,1,null);
 
 
 CREATE TABLE IF NOT EXISTS provaonline.aluno -- depois vincula o usuário ao aluno/professor/coordenador.
@@ -96,14 +115,15 @@ CREATE TABLE IF NOT EXISTS provaonline.aluno -- depois vincula o usuário ao alu
   foreign key (idmatricula) REFERENCES matricula(matricula),
 
   idusuario INT(11) NOT NULL ,
-  foreign key (idusuario) references usuario(idusuario)
+  foreign key (idusuario) references usuario(idusuario),
+  data_exclusao varchar(100) default null
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 -- insiro um aluno, com codigo 1,matricula 1, e usuario 1
-insert into aluno values (1,1,1,1);
+insert into aluno values (1,1,1,1,null);
 
 
 CREATE TABLE IF NOT EXISTS provaonline.coordenador -- depois vincula o usuário ao aluno/professor/coordenador.
@@ -114,23 +134,13 @@ CREATE TABLE IF NOT EXISTS provaonline.coordenador -- depois vincula o usuário 
   foreign key (idpessoa) references pessoa(idpessoa),
 
   idusuario INT(11) NOT NULL,
-	foreign key (idusuario) references usuario(idusuario)
+	foreign key (idusuario) references usuario(idusuario),
+	  data_exclusao varchar(100) default null
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
-CREATE TABLE IF NOT EXISTS provaonline.periodo 
-(
-  idperiodo INT(11) NOT NULL primary key auto_increment ,
-  descricao VARCHAR(70) NOT NULL 
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-insert into periodo values (1,'Primeiro periodo');
-insert into periodo values (2,'Segundo periodo');
 
 CREATE TABLE IF NOT EXISTS provaonline.disciplinas
 (
@@ -139,23 +149,25 @@ CREATE TABLE IF NOT EXISTS provaonline.disciplinas
   idcurso int not null,
   foreign key (idcurso) references curso(idcurso),
   idperiodo int,
-  foreign key(idperiodo) references periodo(idperiodo)
+  foreign key(idperiodo) references periodo(idperiodo),
+  data_exclusao varchar(100) default null
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
-insert into disciplinas values(1,'Matemática Discreta I',1,1);
-insert into disciplinas values(2,'Banco de dados',1,2);
+insert into disciplinas values(1,'Matemática Discreta I',1,1,null);
+insert into disciplinas values(2,'Banco de dados',1,2,null);
 
 create table turno
 (
 	idturno int primary key auto_increment,
-	descricao varchar(100) not null
+	descricao varchar(100) not null,
+	data_exclusao varchar(100) default null
 );
 
-insert into turno values (1,'Dia');
-insert into turno values (2,'Noite');
+insert into turno values (1,'Dia',null);
+insert into turno values (2,'Noite',null);
 
 CREATE TABLE IF NOT EXISTS provaonline.turma 
 (
@@ -168,35 +180,37 @@ CREATE TABLE IF NOT EXISTS provaonline.turma
    foreign key (Idcurso) references curso(idcurso),
 
    idperiodo INT(11) NOT NULL ,
-	 foreign key(Idperiodo) references periodo(idperiodo)
+	 foreign key(Idperiodo) references periodo(idperiodo),
+	 	data_exclusao varchar(100) default null
  )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 -- turma 1,turno 1, curso 1, 2 periodo 
-insert into turma values (1,1,1,2);
+insert into turma values (1,1,1,2,null);
 
 -- depois vincula o usuário ao aluno/professor/coordenador.
 CREATE TABLE IF NOT EXISTS provaonline.professor 
 (
 idprofessor INT(11) NOT NULL primary key,
   
+idpessoa INT(11) NOT NULL ,
+foreign key (idpessoa) references pessoa(idpessoa),    
+  
 idusuario INT(11) NOT NULL,
 FOREIGN key (idusuario) references usuario(idusuario),
-  
-idpessoa INT(11) NOT NULL ,
-foreign key (idpessoa) references pessoa(idpessoa),  
-  
+
 matricula INT(11) NOT NULL,
-foreign key (matricula) REFERENCES matricula(matricula)
+foreign key (matricula) REFERENCES matricula(matricula),
+data_exclusao varchar(100) default null
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
--- Inseri o professor, cujo codigo e 1, de usuario tb e 1, pessoa tb e 1, e matricula e 1 tb
-insert into professor values (1,1,1,1);
+-- Inseri o professor, cujo codigo e 1, de pessoa tb e 1, usuario tb e 1, e matricula e 1 tb
+insert into professor values (1,1,1,1,null);
 
 
 -- essa tabela e responsavel pelas disciplinas do professor.
@@ -208,11 +222,12 @@ create table if not exists provaonline.disciplinasprofessor
  foreign key (Idprofessor) references professor(idprofessor),
 
  disciplina INT(11) not null, 
- foreign key (disciplina) references disciplinas(iddisciplina)
+ foreign key (disciplina) references disciplinas(iddisciplina),
+ data_exclusao varchar(100) default null
 );
 
 -- Idprofessor,disciplina
-insert into disciplinasprofessor values (1,1,2);
+insert into disciplinasprofessor values (1,1,2,null);
 
 
 -- Tabela com as disciplinas que estão sendo cursadas
@@ -227,7 +242,8 @@ CREATE TABLE IF NOT EXISTS provaonline.cursando
   foreign key (idmatricula) references matricula(matricula),
 
   iddisciplina INT(11) NOT NULL,
-  foreign key (iddisciplina) references disciplinas(iddisciplina) 
+  foreign key (iddisciplina) references disciplinas(iddisciplina),
+   data_exclusao varchar(100) default null
 
 )
 ENGINE = InnoDB
@@ -235,8 +251,8 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 
-insert into cursando values (1,1,1,1);
-insert into cursando values (2,1,1,2);
+insert into cursando values (1,1,1,1,null);
+insert into cursando values (2,1,1,2,null);
 
 
 -- Tabelas com provas relacionadas
@@ -247,12 +263,13 @@ create table provas
 	foreign key (disciplina) references disciplinas(iddisciplina),
 	idturma int,
 	foreign key (idturma) references turma(idturma),
-	inicio datetime,
-	termino datetime
+	inicio varchar(100),
+	termino varchar(100),
+  data_exclusao varchar(100) default null
 );
 
 -- idProva,disciplina,idturma.
-insert into provas values (1,1,1,);
+insert into provas values (1,1,1,'06/09/2015','07/09/2015',null);
 
 -- Tabelas com perguntas relacionadas as provas
 create table perguntas
@@ -265,7 +282,8 @@ create table perguntas
 	resposta02 varchar(100),
 	resposta03 varchar(100),
 	resposta04 varchar(100),
-	respostaCorreta char(1) -- Aqui deve entrar, A,B,C,D
+	respostaCorreta char(1), -- Aqui deve entrar, A,B,C,D,
+  data_exclusao varchar(100) default null
 );
 
-insert into perguntas values(1,1,'Quem descobriu o brasil?','Pedro','Joao','Matheus','Teste','A');
+insert into perguntas values(1,1,'Quem descobriu o brasil?','Pedro','Joao','Matheus','Teste','A',null);

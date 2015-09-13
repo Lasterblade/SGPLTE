@@ -11,6 +11,7 @@ class Pessoa_model extends CI_Model
     private $cpf;
     private $email;
     private $telefone;
+    private $data_exclusao;
     
     public function __construct()
      {
@@ -96,7 +97,19 @@ class Pessoa_model extends CI_Model
     public function SetTelefone($telefone)
     {
         $this->telefone = $telefone;
-    }     
+    } 
+    
+        public function GetDataExclusao()
+        {
+            return $this->data_exclusao;
+        }
+        
+        public function SetDataExclusao($data_exclusao)
+        {
+            $this->data_exclusao = $data_exclusao;
+        }
+    
+    
     
     public function index()
     {

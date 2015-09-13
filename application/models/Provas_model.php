@@ -7,7 +7,8 @@ class Provas_model extends CI_Model
     private $idProva;
     private $objDisciplina;
     private $objTurma;
-    
+    private $data_exclusao;
+            
     public function __construct()
     {
         parent::__construct();    
@@ -44,7 +45,15 @@ class Provas_model extends CI_Model
         $this->objTurma = $objTurma;
     }
     
-
+        public function GetDataExclusao()
+        {
+            return $this->data_exclusao;
+        }
+        
+        public function SetDataExclusao($data_exclusao)
+        {
+            $this->data_exclusao = $data_exclusao;
+        }
 
      
 }
