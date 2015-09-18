@@ -7,7 +7,7 @@ class Usuario_model extends CI_Model
     	private $idUsuario;
     	private $login;
     	private $senha;
-    	private $objPerfilUsuario;
+    	private $perfil;
     	private $data_exclusao;
     
         public function __construct()
@@ -45,14 +45,14 @@ class Usuario_model extends CI_Model
             $this->senha = $senha;
         }
 	    
-	    public function GetobjPerfilUsuario()
+	    public function GetPerfil()
         {
-            return $this->objPerfilUsuario;
+            return $this->perfil;
         }
             
-        public function SetobjPerfilUsuario($objPerfilUsuario)
+        public function SetPerfil($perfil)
         {
-            $this->objPerfilUsuario = $objPerfilUsuario;
+            $this->perfil = $perfil;
         }
         
         public function GetDataExclusao()
@@ -65,6 +65,77 @@ class Usuario_model extends CI_Model
             $this->data_exclusao = $data_exclusao;
         }        
         
+        public function consultar(){
+        
+            $this->db->select('u.idusuario,u.login,u.senha, p.descricao');
+    		$this->db->where('u.data_exclusao',null);
+    		$this->db->from('usuario u');
+    		$this->db->join('perfilusuario p', 'u.perfil = p.idperfilusuario');
+    		return $this->db->get()->result();
+        }
+        
+        public function consultar_id($id){
+        
+            $id = addslashes($id);    
+    		return $this->db->get_where('usuario',array('idusuario'=>$id))->row();
+    		
+        }
+        
+        public function inserir(){
+            
+            $object = array(
+    			'idusuario' => $this->GetidUsuario(),
+    			'login' => $this->Getlogin(),
+    			'senha' => $this->Getsenha(),
+    			'perfil' => $this->Getperfil()
+    		);
+    				
+    		$query = $this->db->insert('usuario',$object);
+    				
+    		if($query){
+    			$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+    	                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    	                                      <h4>	<i class="icon fa fa-check"></i> Alerta!</h4>
+    	                                      Seu produto foi cadastrado com sucesso..</div>');
+    			redirect('usuario');
+        
+            }
+        }
+        
+        public function update(){
+
+			$object = array(
+    			'idusuario' => $this->GetidUsuario(),
+    			'login' => $this->Getlogin(),
+    			'senha' => $this->Getsenha(),
+    			'perfil' => $this->Getperfil()
+    		);
+			
+		    $this->db->where('idusuario', $this->GetidUsuario());
+			if($this->db->update('usuario',$object)){
+				$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                             <h4><i class="icon fa fa-check"></i> Alerta!</h4> 
+                                             Seu produto foi Alterado com sucesso..</div>');
+				redirect('usuario');
+			}
+        }
+        
+        public function excluir(){
+            
+            $object = array(
+				'data_exclusao' => $this->GetDataExclusao()
+			);
+			
+		    $this->db->where('idusuario', $this->GetidUsuario());
+			if($this->db->update('usuario',$object)){
+				$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                             <h4><i class="icon fa fa-check"></i> Alerta!</h4>
+                                             Seu produto foi deletado com sucesso..</div>');
+				redirect('usuario');
+			}
+    }
  }
 
 ?>

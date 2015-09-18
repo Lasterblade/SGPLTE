@@ -50,6 +50,19 @@ class Curso_model extends CI_Model
             $this->db->query($strSql);
       }
       
+      public function ConsultarCurso()
+      {
+            $this->db->select('idcurso,descricao');
+    		$this->db->where('data_exclusao',null);
+    		$this->db->from('curso');
+    		return $this->db->get()->result();
+      }
+      
+      public function ExcluirCurso()
+      {
+            $strSql = "update curso set data_exclusao ='".date("d/m/Y H:i")."' where idcurso = '$this->idCurso'";
+            $this->db->query($strSql);
+     }
 }
 
 ?>

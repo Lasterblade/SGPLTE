@@ -5,7 +5,6 @@ class Periodo extends CI_Controller
 	public function __construct()
 	{
 	    parent::__construct();
-	    $this->load->library('form_validation');
 	}
 	public function index()
 	{
@@ -38,7 +37,7 @@ class Periodo extends CI_Controller
 		
 			$objPeriodo = new Periodo_model();
 			$objPeriodo->SetDescricao($this->input->post('descricao'));
-			$objPeriodo->CadastrarPeriodo();
+			$objPeriodo->Cadastrar();
 			
 			echo("<script>alert('Operação realizada com sucesso!')</script>");
 	
@@ -47,5 +46,33 @@ class Periodo extends CI_Controller
 			$this->load->view('/template/footer');
 		
 		}
+	}
+	
+	public function consultar_periodo()
+	{
+		$this->load->model('Periodo_model');
+		$objPeriodo = new Periodo_model();
+	    $data['conteudo'] = $objPeriodo->consultar();
+			
+		$this->load->view('/template/header');
+	    $this->load->view('/Paginas/consultar_periodo',$data);
+	    $this->load->view('/template/footer');	
+	}
+	
+	public function Delete($idperiodo)
+	{
+		$this->load->model('Periodo_model');
+		
+		$objPeriodo = new Periodo_model();
+		$objPeriodo->SetidPeriodo($idperiodo);
+		$objPeriodo->Excluir();
+		
+		echo("<script>alert('Período excluido com sucesso!')</script>");
+		
+	    $data['conteudo'] = $objPeriodo->consultar();
+			
+		$this->load->view('/template/header');
+	    $this->load->view('/Paginas/consultar_periodo',$data);
+	    $this->load->view('/template/footer');	
 	}
 }

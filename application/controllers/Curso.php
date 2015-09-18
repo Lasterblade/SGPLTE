@@ -9,8 +9,12 @@ class Curso extends CI_Controller
 	}
 	public function index()
 	{
+		$this->load->model('Curso_model');
+		$objCurso = new Curso_model();
+	    $data['conteudo'] = $objCurso->ConsultarCurso();
+			
 		$this->load->view('/template/header');
-	    $this->load->view('/Paginas/consultar_Curso');
+	    $this->load->view('/Paginas/consultar_curso',$data);
 	    $this->load->view('/template/footer');
 	}
 	
@@ -21,7 +25,7 @@ class Curso extends CI_Controller
 	    $this->load->view('/template/footer');
 	}
 	
-	
+
 	public function insert()
 	{
 		$this->load->model('Curso_model');
@@ -50,5 +54,28 @@ class Curso extends CI_Controller
 		    $this->load->view('/Paginas/cadastrar_curso');
 			$this->load->view('/template/footer');
 		}
+	}
+	
+
+	public function Update($idusuario)
+	{
+	}
+	
+	public function Delete($idCurso)
+	{
+		$this->load->model('Curso_model');
+		$objCurso = new Curso_model();
+		$objCurso->SetIdCurso($idCurso);
+	    $objCurso->ExcluirCurso();
+
+		echo("<script>alert('Curso excluido com sucesso!')</script>");
+
+		$this->load->model('Curso_model');
+		$objCurso = new Curso_model();
+	    $data['conteudo'] = $objCurso->ConsultarCurso();
+			
+		$this->load->view('/template/header');
+	    $this->load->view('/Paginas/consultar_curso',$data);
+	    $this->load->view('/template/footer');
 	}
 }

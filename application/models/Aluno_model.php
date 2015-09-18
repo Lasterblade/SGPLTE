@@ -32,9 +32,9 @@ class Aluno_model extends CI_Model
         return $this->objMatricula;
     }
     
-    public function SetObjMatricula($objMatricula_)
+    public function SetObjMatricula($objMatricula)
     {
-        $this->objMatricula = $objMatricula_;
+        $this->objMatricula = $objMatricula;
     }
     
     public function GetObjPessoa()
@@ -42,7 +42,7 @@ class Aluno_model extends CI_Model
         return $this->objPessoa;
     }
     
-    public function SetObjPessoa($objPessoa_)
+    public function SetObjPessoa($objPessoa)
     {
         $this->objPessoa = $objPessoa_;
     }
@@ -56,33 +56,7 @@ class Aluno_model extends CI_Model
     {
             $this->data_exclusao = $data_exclusao;
     }    
-    
-    
-    public function ConsultarAluno()
-    {
-        /*
-			Autor: Donovan Sousa
-			Data: 25/08/2015
-			Objetivo: Consultar o aluno pelo nome informado.
-		*/
-        
-         $strSql = "select p.nome,
-                           p.cpf,
-                           p.email,
-                           p.data_nascimento 
-                   from Aluno a inner join pessoa p
-                   on a.pessoa_idpessoa = p.idpessoa where p.nome like '%".$objPessoa->nome."%'";
-                   
-         $query = $this->db->query($strSql);
-    }
-    
-    public function CadastrarAluno_()
-    {
-       $strSql = "insert into aluno (idMatricula,idPessoa,idUsuario)
-       values(`$objMatricula->$idMatricula`,`$objPessoa->$idPessoa`,`$objUsuario->$idUsuario`)";
-        
-        $this->db->query($strSql);
-    }
+
     
 }
 

@@ -43,13 +43,25 @@ if (! defined('BASEPATH')) exit('No direct Script access allowed');
             $this->data_exclusao = $data_exclusao;
         }
         
-        
-        
-        public function CadastrarPeriodo()
+        public function Cadastrar()
         {
             $strSql = "insert into periodo (descricao) values ('$this->descricao');";
             $this->db->query($strSql);
         }
+        
+        public function consultar()
+        {
+            $this->db->select('idperiodo,descricao,data_exclusao');
+    		$this->db->where('data_exclusao',null);
+    		$this->db->from('periodo');
+    		return $this->db->get()->result();
+        }
+        
+        public function Excluir()
+        {
+            $strSql = "update periodo set data_exclusao ='".date("d/m/Y H:i")."' where idperiodo = '$this->idPeriodo'";
+            $this->db->query($strSql);
+        }
+        
     }
-
 ?>
