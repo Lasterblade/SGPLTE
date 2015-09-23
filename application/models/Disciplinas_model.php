@@ -9,7 +9,9 @@ if (! defined('BASEPATH')) exit('No direct Script access allowed');
       private $descricao;
       private $objCurso;
       private $objPeriodo;
+      private $objTurma;
       private $data_exclusao;
+      
 
       public function __construct()
       {
@@ -56,15 +58,25 @@ if (! defined('BASEPATH')) exit('No direct Script access allowed');
             $this->objPeriodo = $objPeriodo;
       }
       
-        public function GetDataExclusao()
-        {
-            return $this->data_exclusao;
-        }
+      public function GetobjTurma()
+      {
+            return $this->objTurma;
+      }
         
-        public function SetDataExclusao($data_exclusao)
-        {
+      public function SetobjTurma($objTurma)
+      {
+            $this->objTurma = $objTurma;
+      }
+      
+      public function GetDataExclusao()
+      {
+            return $this->data_exclusao;
+      }
+        
+      public function SetDataExclusao($data_exclusao)
+      {
             $this->data_exclusao = $data_exclusao;
-        }      
+      }      
       
 }
 

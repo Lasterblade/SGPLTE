@@ -99,42 +99,25 @@ class Pessoa_model extends CI_Model
         $this->telefone = $telefone;
     } 
     
-        public function GetDataExclusao()
-        {
-            return $this->data_exclusao;
-        }
-        
-        public function SetDataExclusao($data_exclusao)
-        {
-            $this->data_exclusao = $data_exclusao;
-        }
-    
-    
-    
-    public function index()
+    public function GetDataExclusao()
     {
-      
+      return $this->data_exclusao;
     }
-     
-
-    function consulta()
-	{
-		$query=$this->db->get('pessoa',10);
-		return $query->result();
-	}
-     public function pessoadados()
-     {
-        $data = array(
-                    'nome' => 'Thiago',
-                    'sobrenome' => 'Cavalcanti'
-                    );
-                 
-            return $data;
-     }
-     
-     
         
-        
+    public function SetDataExclusao($data_exclusao)
+    {
+        $this->data_exclusao = $data_exclusao;
     }
+        
+    public function consultar(){
+        
+        $this->db->select('*');
+		$this->db->where('data_exclusao',null);
+		$this->db->from('pessoa');
+		return $this->db->get()->result();
+		
+    }    
+        
+}
 
 ?>

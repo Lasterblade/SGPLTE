@@ -6,7 +6,6 @@ if (! defined('BASEPATH')) exit('No direct Script access allowed');
     {
         private $matricula;
         private $data_matricula;
-        private $objCurso;
         private $data_exclusao;
         
         public function __construct()

@@ -45,13 +45,13 @@ class Usuario extends CI_Controller
 				
 				$login = addslashes($this->input->post('login'));
 				$senha = addslashes($this->input->post('senha'));
-				$perfilusuario = addslashes($this->input->post('perfilusuario'));
+				$perfilusuario =  ($this->input->post('perfilusuario'));
 				
 				$this->Usuario_model->Setlogin($login);
 				$this->Usuario_model->Setsenha($senha);
 				$this->Usuario_model->SetPerfil($perfilusuario);
 				$this->Usuario_model->inserir();
-			
+		
 			}
 		}
 		

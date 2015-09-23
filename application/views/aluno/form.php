@@ -3,13 +3,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Usuário
+            Aluno
             <small>Preview</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Forms</a></li>
-            <li class="active">Usuário</li>
+            <li class="active">Aluno</li>
           </ol>
         </section>
         <!-- Main content -->
@@ -24,7 +24,7 @@
               <!-- general form elements disabled -->
               <div class="box box-warning">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Usuário</h3>
+                  <h3 class="box-title">Aluno</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">     
                   
@@ -37,19 +37,55 @@
                       <input type="text" class="form-control" name="id" placeholder="Numero ..." disabled="">
                     </div>
                     <div class="form-group">
-                      <label>Login</label>
-                      <input type="text" class="form-control" name="login" placeholder="Entre com o login ...">
+                      <label>Nome:</label>
+                      <input type="text" class="form-control" name="login" placeholder="Entre com o nome ...">
                     </div>
                     <div class="form-group">
-                      <label>Senha</label>
-                      <input type="text" class="form-control" name="senha" placeholder="Entre com a senha...">
+                    <label>Date masks:</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                    </div><!-- /.input group -->
+                  </div>
+                   
+                  <div class="row">
+                   
+                     <div class="col-xs-5">
+                        <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" class="form-control" placeholder="Nome">
+                        </div>
+                     </div>
+                    
+                     <div class="col-xs-3">
+                        <div class="input-group">
+                          <span class="input-group-addon">Sexo: </span>  
+                          
+                          <select name="perfilusuario" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" >
+                            <option selected="selected" value="0">Selecione...</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                          </select>
+                      </div>
                     </div>
+                   
+                    <div class="col-xs-2">
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                        </div>
+                    </div>
+                  </div>
+               
+                  
                     <div class="form-group has-warning">
                     <label>Perfil de Usuario</label>
                     <select name="perfilusuario" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" >
                       <option selected="selected" value="0">Selecione...</option>
-                      <?php foreach($perfilusuario as $value): ?>
-                      <option value="<?php echo $value->idperfilusuario; ?>"><?php echo $value->descricao; ?></option>
+                      <?php foreach($pessoa as $value): ?>
+                      <option value="<?php echo $value->idpessoa; ?>"><?php echo $value->nome; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
@@ -61,7 +97,7 @@
 
                   <?php form_close(); ?>
                   
-                        </div><!-- /.box-body -->
+                </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!--/.col (right) -->
           </div>   <!-- /.row -->

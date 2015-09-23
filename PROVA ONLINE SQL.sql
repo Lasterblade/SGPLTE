@@ -34,7 +34,7 @@ create table perfilusuario
 insert into perfilusuario values (1,'aluno',null);
 insert into perfilusuario values (2,'professor',null);
 insert into perfilusuario values (3,'coordenador',null);
-
+insert into perfilusuario values (3,'coordenador',null);
 
 CREATE TABLE IF NOT EXISTS provaonline.usuario -- primeiro cadastra o usuário.
 (
@@ -263,8 +263,8 @@ create table provas
 	foreign key (disciplina) references disciplinas(iddisciplina),
 	idturma int,
 	foreign key (idturma) references turma(idturma),
-	inicio varchar(100),
-	termino varchar(100),
+	inicio date,
+	termino date,
   data_exclusao varchar(100) default null
 );
 

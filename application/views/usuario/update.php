@@ -30,10 +30,6 @@
                   
                   <?php echo form_open('usuario/update/'.$editar->idusuario); ?>
                   <?php echo validation_errors(); ?>
-                
-                  <?php foreach($perfilusuario as $value): ?>
-                      <?php echo($value->idperfilusuario == $editar->perfil ? 'sim' : 'nao'); ?>
-                      <?php endforeach; ?>
                       
                      <!-- text input -->
                   <div class="form-group" action="insert">
