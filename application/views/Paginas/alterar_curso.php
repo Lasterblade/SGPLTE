@@ -28,14 +28,10 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">     
                   
-                  <?php echo form_open('Curso/update/'.$editar->idusuario); ?>
+                  <?php echo form_open('Curso/update/'.$editar->idcurso); ?>
                   <?php echo validation_errors(); ?>
                   
                     <!-- text input -->
-                    <div class="form-group" action="update">
-                      <label>Id</label>
-                      <input type="text" class="form-control" name="id" value="<?php echo $editar->idcurso; ?>" placeholder="Numero ..." disabled="">
-                    </div>
                     <div class="form-group">
                       <label>Descrição</label>
                       <input type="text" class="form-control" name="descricao" value="<?php echo $editar->descricao; ?>" placeholder="Entre com a descrição ...">

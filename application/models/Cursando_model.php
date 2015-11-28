@@ -57,16 +57,59 @@ if (! defined('BASEPATH')) exit('No direct Script access allowed');
         $this->objDisciplina = $objDisciplina;
     }
 
-        public function GetDataExclusao()
-        {
-            return $this->data_exclusao;
-        }
+    public function GetDataExclusao()
+    {
+        return $this->data_exclusao;
+    }
         
-        public function SetDataExclusao($data_exclusao)
-        {
-            $this->data_exclusao = $data_exclusao;
-        }    
+    public function SetDataExclusao($data_exclusao)
+    {
+        $this->data_exclusao = $data_exclusao;
+    }    
     
+    public function Consultar(){
+    
+        $this->db->select('*');
+    	$this->db->from('cursando c');
+        $this->db->join('aluno a', 'c.Aluno_idAluno =  a.idaluno');
+        $this->db->join('disciplina d', 'c.disciplina_iddisciplina =  d.iddisciplina');
+    	return $this->db->get()->result();
+		
+    }
+    public function Consultar_Disciplinas($matricula){
+    
+        $this->db->select('*');
+        $this->db->where('a.matricula_idmatricula',$matricula);
+    	$this->db->from('cursando c');
+        $this->db->join('aluno a', 'c.Aluno_idAluno =  a.idaluno');
+        $this->db->join('disciplina d', 'c.disciplina_iddisciplina =  d.iddisciplina');
+    	return $this->db->get()->result();
+		
+    }
+   //mysql> select * from cursando c inner join aluno a on c.Aluno_idAluno = a.idaluno inner join disciplina d on d.iddisciplina = c.disciplina_iddisciplina;
+    public function Consultar_AlunoCursando($matricula){
+    
+        $this->db->select('*');
+        $this->db->where('a.matricula_idmatricula',$matricula);
+    	$this->db->from('cursando c');
+        
+        
+    	return $this->db->get()->result();
+		
+    }
+    public function Validacao_AlunoCursando($aluno) {
+            $this->db->where('c.Aluno_idAluno', $aluno);
+            $this->db->from('cursando c');
+            $this->db->join('provas p', 'c.disciplina_iddisciplina = p.disciplina_iddisciplina');
+        
+            $query = $this->db->get(); 
+    
+            if ($query->num_rows() >= 1) { 
+                return true; // RETORNA VERDADEIRO
+        }
+    }
+   
 }
+
 
 ?>

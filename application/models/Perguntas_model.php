@@ -6,12 +6,12 @@ class Perguntas_model extends CI_Model
 {
 
     private $idPergunta;
-    private $objProva;
+    private $titulo;
     private $pergunta;
-    private $resposta01;
-    private $resposta02;
-    private $resposta03;
-    private $resposta04;
+    private $respostaA;
+    private $respostaB;
+    private $respostaC;
+    private $respostaD;
     private $respostaCorreta;
     private $data_exclusao;
 
@@ -19,7 +19,6 @@ class Perguntas_model extends CI_Model
     {
         parent::__construct();    
     }
-
 
     public function GetidPergunta()
     {
@@ -40,6 +39,17 @@ class Perguntas_model extends CI_Model
     {
         $this->objProva = $objProva;
     }
+    
+    public function GetTitulo()
+    {
+        return $this->titulo;
+    }
+        
+    public function SetTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+    }
+     
      
     public function GetPergunta()
     {
@@ -51,44 +61,44 @@ class Perguntas_model extends CI_Model
         $this->pergunta = $pergunta;
     }
     
-    public function Getresposta01()
+    public function GetrespostaA()
     {
-        return $this->resposta01;
+        return $this->respostaA;
     }
         
-    public function Setresposta01($resposta01)
+    public function SetrespostaA($respostaA)
     {
-        $this->resposta01 = $resposta01;
+        $this->respostaA = $respostaA;
     }
  
-    public function Getresposta02()
+    public function GetrespostaB()
     {
-        return $this->resposta02;
+        return $this->respostaB;
     }
         
-    public function Setresposta02($resposta02)
+    public function SetrespostaB($respostaB)
     {
-        $this->resposta02 = $resposta02;
+        $this->respostaB = $respostaB;
     }   
 
-    public function Getresposta03()
+    public function GetrespostaC()
     {
-        return $this->resposta03;
+        return $this->respostaC;
     }
         
-    public function Setresposta03($resposta03)
+    public function SetrespostaC($respostaC)
     {
-        $this->resposta03 = $resposta03;
+        $this->respostaC = $respostaC;
     }
 
-    public function Getresposta04()
+    public function GetrespostaD()
     {
-        return $this->resposta04;
+        return $this->respostaD;
     }
         
-    public function Setresposta04($resposta04)
+    public function SetrespostaD($respostaD)
     {
-        $this->resposta04 = $resposta04;
+        $this->respostaD = $respostaD;
     }
  
     public function GetRespostaCorreta()
@@ -101,17 +111,124 @@ class Perguntas_model extends CI_Model
         $this->respostaCorreta = $respostaCorreta;
     }
     
-        public function GetDataExclusao()
-        {
-            return $this->data_exclusao;
-        }
+    public function GetDataExclusao()
+    {
+        return $this->data_exclusao;
+    }
+    
+    public function SetDataExclusao($data_exclusao)
+    {
+        $this->data_exclusao = $data_exclusao;
+    }
+
+    public function Consultar(){
         
-        public function SetDataExclusao($data_exclusao)
-        {
-            $this->data_exclusao = $data_exclusao;
+        $this->db->select('*');
+		$this->db->where('data_exclusao',null);
+		$this->db->from('perguntas');
+	    return $this->db->get()->result();
+		
+     }
+     
+    public function Consultar_Id($id){
+        
+        $id = addslashes($id);    
+		return $this->db->get_where('perguntas',array('idperguntas'=>$id))->row();
+		
+    }
+    
+     public function Validacao($id) {
+            $this->db->where('idprovas', $id); 
+            $this->db->from('provas');
+        
+            $query = $this->db->get(); 
+    
+            if ($query->num_rows() == 1) { 
+                return true; // RETORNA VERDADEIRO
         }
+    }
     
+    public function inserir_questao(){
+        $object = array(
+			'idperguntas' => $this->GetidPergunta(),
+			'titulo' => $this->GetTitulo(),
+			'pergunta' => $this->GetPergunta(),
+			'respostaA' => $this->GetrespostaA(),   
+			'respostaB' => $this->GetrespostaB(),  
+			'respostaC' => $this->GetrespostaC(),  
+			'respostaD' => $this->GetrespostaD(),  
+			'respostaCorreta' => $this->GetRespostaCorreta(),  
+			'data_exclusao' => null,
+	    );
+				
+		return $this->db->insert('perguntas',$object);
+				
+    }
     
+    public function Inserir(){
+        $object = array(
+			'idperguntas' => $this->GetidPergunta(),
+			'titulo' => $this->GetTitulo(),
+			'pergunta' => $this->GetPergunta(),
+			'respostaA' => $this->GetrespostaA(),   
+			'respostaB' => $this->GetrespostaB(),  
+			'respostaC' => $this->GetrespostaC(),  
+			'respostaD' => $this->GetrespostaD(),  
+			'respostaCorreta' => $this->GetRespostaCorreta(),  
+			'data_exclusao' => null,
+	    );
+				
+		$query = $this->db->insert('perguntas',$object);
+				
+		if($query){
+			$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+	                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	                                      <h4>	<i class="icon fa fa-check"></i> Alerta!</h4>
+	                                      Sua Turma foi cadastrada com sucesso..</div>');
+			redirect('pergunta');
+        
+        }
+    }
+    
+    public function Update(){
+
+	    $object = array(
+			'idperguntas' => $this->GetidPergunta(),
+			'titulo' => $this->GetTitulo(),
+			'pergunta' => $this->GetPergunta(),
+			'respostaA' => $this->GetrespostaA(),   
+			'respostaB' => $this->GetrespostaB(),  
+			'respostaC' => $this->GetrespostaC(),  
+			'respostaD' => $this->GetrespostaD(),  
+			'respostaCorreta' => $this->GetRespostaCorreta(),  
+			'data_exclusao' => null,
+	    );
+			
+		$this->db->where('idperguntas', $this->GetidPergunta());
+		if($this->db->update('perguntas',$object)){
+			$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                             <h4><i class="icon fa fa-check"></i> Alerta!</h4> 
+                                             Seu produto foi Alterado com sucesso..</div>');
+			redirect('pergunta');
+		}
+    }
+    
+    public function Excluir(){
+            
+       $object = array(
+			'data_exclusao' => $this->GetDataExclusao()
+		);
+			
+		$this->db->where('idperguntas', $this->GetidPergunta());
+		if($this->db->update('perguntas',$object)){
+			$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                             <h4><i class="icon fa fa-check"></i> Alerta!</h4>
+                                             Seu produto foi deletado com sucesso..</div>');
+			redirect('pergunta');
+	    }
+    }      
     
 }
 

@@ -50,6 +50,12 @@ class Curso_model extends CI_Model
             $this->db->query($strSql);
       }
       
+      public function Consultar_Id($id){
+        
+            $id = addslashes($id);    
+    	      return $this->db->get_where('curso',array('idcurso'=>$id))->row();
+    }
+      
       public function ConsultarCurso()
       {
             $this->db->select('idcurso,descricao');
@@ -57,6 +63,24 @@ class Curso_model extends CI_Model
     		$this->db->from('curso');
     		return $this->db->get()->result();
       }
+      public function AlteraCurso(){
+
+	    $object = array(
+			'idcurso' => $this->GetIdCurso(),
+			'descricao' => $this->GetDescricao(),
+			'data_exclusao' => null,
+	    );
+			
+		$this->db->where('idcurso', $this->GetIdCurso());
+		if($this->db->update('curso',$object)){
+			$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                             <h4><i class="icon fa fa-check"></i> Alerta!</h4> 
+                                             Seu produto foi Alterado com sucesso..</div>');
+			redirect('curso');
+		}
+    }
+      
       
       public function ExcluirCurso()
       {

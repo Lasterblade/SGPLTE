@@ -1,0 +1,2433 @@
+*
+{
+    font-family: Arial;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+td label
+{
+    margin-left: 10px;
+}
+
+blockquote
+{
+    background: url(/Images/QuoteStart.png) no-repeat scroll left top transparent;
+    margin-bottom: 1em;
+}
+
+    blockquote p
+    {
+        background: url(/Images/QuoteEnd.png) no-repeat scroll right bottom transparent;
+        color: #333;
+        font-style: italic;
+        padding: 0;
+    }
+
+.topBorder
+{
+    border-top: 1px solid #000;
+}
+
+#basketTotalBox td
+{
+    width: 100px;
+    padding: 5px;
+}
+
+.rightMostListItem
+{
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+
+.newsBox h3, .newsItemBox h2
+{
+    color: #333;
+    font-size: 1em;
+}
+
+body
+{
+    color: #333;
+    position: relative;
+    font-size: .73em;
+    line-height: 1.5em;
+    background-color: #FFF;
+}
+
+address
+{
+    font-style: normal;
+}
+
+.accountancyH2
+{
+    color: #000;
+    font-size: 1em;
+}
+
+.red
+{
+    color: #900;
+}
+
+div.editable:hover
+{
+    border: solid 2px #000;
+}
+
+div.editable
+{
+    min-height: 2px;
+}
+
+.clear
+{
+    clear: both;
+}
+
+.competitionText
+{
+    font-size: .65em;
+}
+
+.headingText
+{
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+a
+{
+    color: #900;
+    text-decoration: none;
+}
+
+.fr50
+{
+    float: right;
+    width: 50%;
+}
+
+.fl50
+{
+    float: left;
+    width: 50%;
+}
+
+.breadCrumbList ul li
+{
+    display: inline;
+    color: #666;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.tac
+{
+    text-align: center;
+}
+
+.footerTopContentBox table tr td
+{
+    vertical-align: middle;
+    padding: 3px;
+}
+/*.QuickCreateButton{position:relative;top:155px}*/
+/*.QuickCreateBox{width:280px;height:220px;float:right;text-align:center;position:relative;background-repeat:no-repeat;background-image:url(/Images/sprites.png);background-position:-10px -428px}*/
+.QuickCreateButton
+{
+    position: relative;
+    top: 148px;
+}
+
+    .QuickCreateButton a
+    {
+        margin-left: 24px;
+    }
+
+.QuickCreateBox
+{
+    width: 280px;
+    height: 213px;
+    float: right;
+    position: relative;
+    background: #efefef url(/Images/special-offer-notext.jpg) no-repeat;
+}
+
+    .QuickCreateBox .pod-text
+    {
+        position: absolute;
+        display: block;
+        top: 82px;
+        left: 24px;
+        width: 140px;
+    }
+
+        .QuickCreateBox .pod-text h2
+        {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .QuickCreateBox .pod-text h3
+        {
+            margin-bottom: 2px;
+            color: #FFF;
+            font-size: 16px;
+        }
+
+            .QuickCreateBox .pod-text h3 span
+            {
+                color: red;
+            }
+
+        .QuickCreateBox .pod-text p
+        {
+            font-size: 10px;
+            margin-top: 3px;
+            line-height: 20px;
+            color: #FFF;
+        }
+
+    .QuickCreateBox .pod-disclaimer
+    {
+        font-size: 11px;
+        margin-top: 15px;
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+    }
+
+.benefitsOnProductPage
+{
+    float: left;
+    position: relative;
+    width: 500px;
+}
+
+.alignBottom
+{
+    position: absolute;
+    bottom: 0;
+}
+
+.rowSpace1
+{
+    line-height: 1px;
+    height: 1px;
+    width: 100%;
+    font-size: 0;
+}
+
+.rowSpace2
+{
+    line-height: 2px;
+    height: 2px;
+    width: 100%;
+    font-size: 0;
+}
+
+.rowSpace3
+{
+    line-height: 3px;
+    height: 3px;
+    width: 100%;
+    font-size: 0;
+}
+
+.rowSpace4
+{
+    line-height: 4px;
+    height: 4px;
+    width: 100%;
+    font-size: 0;
+}
+
+.rowSpace5
+{
+    line-height: 5px;
+    height: 5px;
+    width: 100%;
+    font-size: 0;
+}
+
+.rowSpace10
+{
+    line-height: 10px;
+    height: 10px;
+    width: 100%;
+    font-size: 0;
+}
+
+.rowSpace15
+{
+    line-height: 15px;
+    height: 15px;
+    width: 100%;
+    font-size: 0;
+}
+
+.rowSpace20
+{
+    line-height: 20px;
+    height: 20px;
+    width: 100%;
+    font-size: 0;
+}
+
+.rowSpace30
+{
+    line-height: 30px;
+    height: 30px;
+    width: 100%;
+    font-size: 0;
+}
+
+.rowSpace40
+{
+    line-height: 40px;
+    height: 40px;
+    width: 100%;
+    font-size: 0;
+}
+
+.w100
+{
+    width: 100px;
+    position: relative;
+}
+
+.w200
+{
+    width: 200px;
+    position: relative;
+}
+
+.w300
+{
+    width: 300px;
+    position: relative;
+}
+
+.w400
+{
+    width: 400px;
+    position: relative;
+}
+
+.w500
+{
+    width: 500px;
+    position: relative;
+}
+
+.dottedLine
+{
+    height: 1px;
+    line-height: 1px;
+    border-top: dotted 1px #C3C2C3;
+}
+
+.whiteLine
+{
+    line-height: 1px;
+    border-top: solid 1px #FFF;
+}
+
+.greyLine
+{
+    line-height: 1px;
+    border-top: solid 1px #C3C2C3;
+}
+
+.redLine
+{
+    line-height: 1px;
+    border-top: solid 1px #900;
+}
+
+.tick
+{
+    background: url(/images/tick_cross.png) 0 -5px no-repeat;
+    height: 18px;
+    width: 35px;
+}
+
+.cross
+{
+    background: url(/images/tick_cross.png) -45px -5px no-repeat;
+    height: 18px;
+    width: 35px;
+}
+
+.leftColumnLeft
+{
+    position: relative;
+    float: left;
+    width: 425px;
+}
+
+.leftColumnRight
+{
+    position: relative;
+    float: right;
+}
+
+.modalPopupBackground
+{
+    background-color: #666;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    z-index: 999;
+}
+
+.transparentMask
+{
+    z-index: 999;
+}
+
+.seoPanel
+{
+    width: 600px;
+    background: #FFF;
+    border: solid 1px #000;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+    .seoPanel .shadedBackground
+    {
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+.competitionRow, .competitionRow tr td
+{
+    height: 30px;
+    border-top: solid 1px #EEE;
+}
+
+.competitionFooter, .competitionFooter tr td
+{
+    border-top: solid 1px #900;
+    text-align: center;
+}
+
+#mayConsider
+{
+    background-image: url(/Images/MayConsider.png);
+    height: 177px;
+    width: 640px;
+}
+
+.leftServicePod
+{
+    float: left;
+    width: 85px;
+}
+
+.rightServicePod
+{
+    position: relative;
+    float: right;
+    width: 525px;
+}
+
+.middleAndRightServicePod
+{
+    position: relative;
+    float: left;
+    width: 534px;
+}
+
+.faqList table td
+{
+    padding-right: 10px;
+}
+
+.numberedList ul
+{
+    list-style-type: decimal;
+    list-style-position: outside;
+    margin: 0;
+    padding: 0;
+}
+
+.imageList, .imageListExtraLineSpace
+{
+    list-style-image: url(/Images/RedBullet.png);
+    list-style-position: outside;
+    margin: 0;
+    padding: 0;
+}
+
+.imageListExtraLineSpace
+{
+    line-height: 1.9em;
+}
+
+    .imageList ul, .imageListExtraLineSpace ul
+    {
+        padding-left: 15px;
+    }
+
+.superLargeRed
+{
+    color: #900;
+    font-size: 1.5em;
+}
+
+.superLargeGrey
+{
+    color: #666;
+    font-size: 1.8em;
+}
+
+.gridSeparator
+{
+    border-bottom: solid 1px #EEE;
+}
+
+#chooseServicePod
+{
+    position: relative;
+    padding: 10px 20px;
+}
+
+.shadedBackground
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 175px;
+    width: 100%;
+    background-image: url(/Images/shadedBackground.png);
+    background-repeat: repeat-x;
+    z-index: -1000;
+}
+
+#breadcrumb a
+{
+    text-decoration: none;
+    color: #900;
+}
+
+#breadcrumb .separatorCharacter
+{
+    color: #CCC;
+}
+
+#smallNavWrapper
+{
+    position: relative;
+    background-color: #666;
+    border-bottom: solid 2px #000;
+}
+
+    #smallNavWrapper .searchBox
+    {
+        float: left;
+        width: 276px;
+        height: 19px;
+        padding-top: 2px;
+        background-repeat: no-repeat;
+        background-image: url(/Images/sprites.png);
+        background-position: -10px -10px;
+        margin: 1px 0;
+    }
+
+#searchBoxLeft
+{
+    float: left;
+    width: 220px;
+    text-align: left;
+    padding-left: 4px;
+}
+
+#searchBoxRight
+{
+    float: right;
+    width: 39px;
+    margin-top: -1px;
+}
+
+.smallNav
+{
+    width: 938px;
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border-color: #999;
+}
+
+    .smallNav ul li
+    {
+        color: #FFF;
+        list-style-type: none;
+        display: inline;
+        font-size: .9em;
+        border-left: solid 1px #999;
+        padding: 0 10px;
+    }
+
+        .smallNav ul li a
+        {
+            text-decoration: none;
+        }
+
+#topSmallNav
+{
+    text-align: right;
+    padding-bottom: 2px;
+}
+
+    #topSmallNav ul
+    {
+        padding-top: 3px;
+    }
+
+#bottomSmallNav
+{
+    float: left;
+    position: absolute;
+    left: 54px;
+    top: 7px;
+}
+
+.noBorder
+{
+    border-style: none !important;
+}
+
+.searchTextBox
+{
+    line-height: 20px;
+}
+
+#headerWrapper
+{
+    position: relative;
+    background: #EFEFEF url(/Images/TabBackground.gif) repeat-x bottom;
+    background-repeat: repeat-x;
+    height: 145px;
+    z-index: 0;
+}
+
+    #headerWrapper #header
+    {
+        width: 940px;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+
+        #headerWrapper #header #logoImage
+        {
+            position: absolute;
+            height: 88px;
+            width: 156px;
+            top: 11px;
+            left: -2px;
+        }
+
+        #headerWrapper #header #headerWhite
+        {
+            position: absolute;
+            background: transparent url(/Images/HeaderWhite.gif) no-repeat;
+            height: 106px;
+            width: 513px;
+            top: 2px;
+            right: 0;
+            background-image: url(/Images/sprites.png);
+            background-position: -10px -55px;
+        }
+
+        #headerWrapper #header #shoppingBag
+        {
+            position: absolute;
+            top: 25px;
+            left: 685px;
+        }
+
+        #headerWrapper #header #callUsBox
+        {
+            position: absolute;
+            top: 45px;
+            left: 662px;
+            color: #999;
+            text-align: center;
+            font-weight: 700;
+        }
+
+            #headerWrapper #header #callUsBox #callUsLine1
+            {
+                font-size: 1.4em;
+            }
+
+        #headerWrapper #header #shoppingBox
+        {
+            position: absolute;
+            right: 0;
+            top: 34px;
+            width: 170px;
+            line-height: 110%;
+        }
+
+            #headerWrapper #header #shoppingBox a
+            {
+                text-decoration: none;
+                color: #333;
+                font-size: .9em;
+            }
+
+#navTab
+{
+    position: absolute;
+    bottom: 0;
+    float: left;
+    width: 940px;
+    font-size: 1.25em;
+    line-height: 1.8em;
+}
+
+    #navTab ul
+    {
+        list-style: none;
+        margin: 0;
+        padding: 10px 0;
+        width: 940px;
+    }
+
+    #navTab li
+    {
+        float: left;
+        background: url(/Images/TabRight.gif) no-repeat right top;
+        margin: 0 2px 0 0;
+        text-align: center;
+    }
+
+    #navTab a
+    { /*float:left;*/
+        display: block;
+        background: url(/Images/TabLeft.gif) no-repeat left top;
+        color: #FFF;
+        text-decoration: none;
+        background-image: url(/Images/sprites.png);
+        background-position: -10px -1127px;
+        padding: 5px 0;
+    }
+    /*#header a{float:none}*/
+    #navTab #current, #navTab .hovered
+    {
+        background-image: url(/Images/TabRightSelected.gif);
+    }
+
+        #navTab #current a, #navTab .hovered a
+        {
+            color: #666;
+            background-image: url(/Images/sprites.png);
+            background-position: -10px -1022px;
+            overflow: hidden;
+        }
+
+        #navTab #current a
+        { /*padding:5px 19px;*/
+        }
+
+#NavHome, #NavHomeSelected
+{
+    position: relative;
+    display: block;
+    width: 12px;
+    top: .5em;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+#NavHome
+{
+    background-image: url(/Images/NavHome.gif);
+}
+
+#NavHomeSelected, #navTab .hovered a #NavHome
+{
+    background-image: url(/Images/sprites.png);
+    background-position: -10px -286px;
+}
+
+#contentWrapper
+{
+    width: 940px;
+    position: relative;
+    margin: 28px auto 54px;
+}
+
+#leftColumn
+{
+    float: left;
+    width: 640px;
+}
+
+#rightColumn
+{
+    float: right;
+    width: 280px;
+    margin-bottom: 20px;
+}
+
+#leftColumnNarrow
+{
+    float: left;
+    width: 470px;
+}
+
+#rightColumnWide
+{
+    float: right;
+    width: 450px;
+}
+
+#footerTopWrapper
+{
+    position: relative;
+    background-image: url(/Images/FooterTop.gif);
+    background-color: #EEE;
+    background-repeat: repeat-x;
+}
+
+#footerMiddleWrapper
+{
+    position: relative;
+    background-color: #EEE;
+	border-top: 2px solid #9a0002;
+}
+
+#footerBottomWrapper
+{
+    position: relative;
+    background: transparent url(/Images/FooterBottom.gif) repeat-x;
+    height: 50px;
+}
+
+#footerTopWrapper #footerTop
+{
+    position: relative;
+    width: 940px;
+    height: 68px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 0;
+}
+
+#footerMiddleWrapper #footerMiddle
+{
+    position: relative;
+    width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 52px 0;
+}
+
+#footerBottomWrapper #footerBottom
+{
+    position: relative;
+    width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footerHeading, .footerHeading a
+{
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+#footerTopWrapper #footerTop #topFooterList li
+{
+    list-style-type: none;
+    display: block;
+    float: left;
+    width: 310px;
+}
+
+#footerTopWrapper #footerTop #PaymentTypes
+{
+    height: 29px;
+    width: 280px;
+    position: relative;
+    margin-top: 5px;
+}
+
+    #footerTopWrapper #footerTop #PaymentTypes img
+    {
+        float: left;
+        position: relative;
+        right: 5px;
+    }
+
+
+#footerTopWrapper #footerTop .footerTopContentBox
+{
+    margin-top: 5px;
+}
+
+.footerTopContentBox #awardsLeftColumn
+{
+    float: left;
+    background-repeat: no-repeat;
+    width: 55px;
+    height: 50px;
+    background-image: url(/Images/sprites.png);
+    background-position: -10px -866px;
+}
+
+.footerTopContentBox #awardsRightColumn
+{
+    float: left;
+    width: 235px;
+    font-size: .85em;
+    line-height: 170%;
+}
+
+#signUpBox
+{
+    position: relative;
+    background-image: url(/Images/SignUpBox.gif);
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 25px;
+    margin-top: 10px;
+}
+
+    #signUpBox #signUpLeft
+    {
+        position: absolute;
+        float: left;
+        width: 200px;
+        left: 4px;
+        top: 1px;
+    }
+
+    #signUpBox #signUpRight
+    {
+        position: absolute;
+        float: right;
+        text-align: right;
+        width: 66px;
+        height: 20px;
+        top: 2px;
+        right: 3px;
+    }
+
+.separatorGray
+{
+    position: absolute;
+    height: 11px;
+    width: 940px;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-image: url(/Images/sprites.png);
+    background-position: -10px -936px;
+}
+
+.separatorWhite
+{
+    position: absolute;
+    height: 7px;
+    width: 640px;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-image: url(/Images/sprites.png);
+    background-position: -10px -661px;
+}
+
+#footerMiddleWrapper #footerMiddle #mainFooterList li
+{
+    list-style-type: none;
+    display: block;
+    float: left;
+    width: 200px;
+}
+
+    #footerMiddleWrapper #footerMiddle #mainFooterList li a
+    {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    #footerMiddleWrapper #footerMiddle #mainFooterList li ul li
+    {
+        list-style-type: none;
+        display: block;
+        float: none;
+        color: #980000;
+        font-size: 1em;
+    }
+
+#footerAddress
+{
+    color: #CCC;
+    font-size: .97em;
+    position: absolute;
+    top: 10px;
+    left: 65px;
+}
+
+#footerBottomWrapper #footerBottom #footerBottomLogo
+{
+    position: absolute;
+    background-repeat: no-repeat;
+    width: 58px;
+    height: 35px;
+    left: 0;
+    top: 11px;
+    background-image: url(/Images/sprites.png);
+    background-position: -10px -967px;
+}
+
+#footerBottomWrapper #footerBottom #footerCraftedLogo
+{
+    position: absolute;
+    width: 66px;
+    height: 16px;
+    right: 0;
+    top: 25px;
+}
+
+.podContent
+{
+    background-color: #EFEFEF;
+    position: relative;
+    padding: 12px 19px 13px;
+}
+
+.servicesPanel
+{
+    font-size: .74em;
+    padding: 2px 5px;
+}
+
+#HomeBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/HomeBanner.png);
+    height: 213px;
+    width: 940px;
+}
+
+    #HomeBanner #createAPackageBox
+    {
+        position: absolute;
+        right: 25px;
+        top: 125px;
+        width: 232px;
+    }
+
+        #HomeBanner #createAPackageBox #SelectPackage select
+        {
+            width: 100%;
+            height: 1.5em;
+            line-height: 1.5em;
+        }
+
+        #HomeBanner #createAPackageBox #QuickCreate
+        {
+            width: 232px;
+            height: 41px;
+            margin-top: 13px;
+        }
+
+#whyChooseW1 #left
+{
+    float: left;
+    width: 485px;
+}
+
+#whyChooseW1 #right
+{
+    position: relative;
+    float: right;
+    background-repeat: no-repeat;
+    top: 4px;
+    width: 144px;
+    height: 109px;
+    background-image: url(/Images/sprites.png);
+    background-position: -10px -688px;
+}
+
+.overviewColumn
+{
+    float: left;
+    width: 181px;
+    height: 105px;
+    text-align: center;
+    background-color: #EFEFEF;
+    border: Solid 5px #ECECEC;
+    vertical-align: bottom;
+    position: relative;
+    margin: 0 1px 1px 0;
+    padding: 8px 10px;
+}
+
+.overviewColumnHovered
+{
+    background-color: #feff99;
+    border: Solid 5px #feff99;
+}
+
+.overviewText
+{
+    position: relative;
+    margin-top: 65px;
+}
+
+.overviewImage
+{
+    position: absolute;
+    height: 65px;
+    width: 65px;
+    left: 70px;
+}
+
+#VirtualOfficeBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/VirtualOfficeBannerSlim.jpg);
+    height: 110px;
+    width: 940px;
+}
+
+#PackagesListContainer
+{
+    position: relative;
+    background-image: url(/Images/shadedBackground.png);
+    background-repeat: repeat-x;
+    margin: 15px 0 0;
+    padding: 15px;
+}
+
+#PackagesList
+{
+    position: relative;
+    list-style-type: none;
+    padding: 12px 0 0;
+}
+
+    #PackagesList li
+    {
+        position: relative;
+        height: 45px;
+        cursor: pointer;
+        overflow: hidden;
+        white-space: nowrap;
+        vertical-align: bottom;
+        background-image: url(/Images/backgrounds/VO_Package.png);
+        background-position: top left;
+        background-repeat: no-repeat;
+        margin: 15px 0 0;
+    }
+
+        #PackagesList li.selected
+        {
+            background-image: url(/Images/backgrounds/VO_Highlight.png);
+            background-position: top left;
+            background-repeat: no-repeat;
+        }
+
+        #PackagesList li h3
+        {
+            float: left;
+            line-height: 32px;
+            margin: 5px 0 0 10px;
+        }
+
+.packageInfoRight
+{
+    float: right;
+    width: 70px;
+    margin: 6px 10px 0 0;
+}
+
+.fromPriceContainer
+{
+    white-space: nowrap;
+    color: #900;
+    font-size: 1.42em;
+    font-weight: 600;
+    float: left;
+}
+
+.plusVAT
+{
+    white-space: nowrap;
+    color: #000;
+    font-size: .9em;
+    float: left;
+    clear: left;
+}
+
+#PackageDetailsContainer
+{
+    position: relative;
+    min-height: 200px;
+    background-image: url(/Images/shadedBackground.png);
+    background-repeat: repeat-x;
+    top: 66px;
+    padding: 15px;
+}
+
+.PackagesInformationContainer
+{
+    position: relative;
+    display: none;
+}
+
+#PackageDetailsContainer .selected
+{
+    display: block;
+}
+
+#PackageDetailsContainer .SelectedImageContainer
+{
+    position: relative;
+    height: 60px;
+    margin: 5px 0 0;
+}
+
+#PackageDetailsContainer h3
+{
+    position: relative;
+    margin: 10px 0 0;
+}
+
+#PackageDetailsContainer .SelectedProductContainer
+{
+    position: relative;
+    margin: 13px 0 0;
+}
+
+    #PackageDetailsContainer .SelectedProductContainer ul
+    {
+        list-style-image: url(/Images/RedBullet.gif);
+        list-style-position: outside;
+        margin: 0 0 0 15px;
+    }
+
+#divBenefits
+{
+    position: relative;
+    clear: left;
+    background: #f6f6f6;
+    margin-top: 85px;
+    float: left;
+    padding: 15px;
+}
+
+    #divBenefits ul
+    {
+        list-style: none;
+        float: left;
+        width: 100%;
+        margin: 15px 0 0;
+        padding: 0;
+    }
+
+        #divBenefits ul li
+        {
+            margin-bottom: 10px;
+            clear: left;
+            float: left;
+            width: 100%;
+        }
+
+            #divBenefits ul li img
+            {
+                width: 30px;
+                height: 31px;
+                float: left;
+            }
+
+            #divBenefits ul li div
+            {
+                float: right;
+                width: 205px;
+                margin-left: 10px;
+                font-size: .9em;
+            }
+
+#MailLandingBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/MailLandingBanner.jpg);
+    height: 213px;
+    width: 940px;
+}
+
+#MailForwardingTrading
+{
+    position: relative;
+    background: url(/Images/Services/MailForwarding.png);
+    height: 65px;
+    width: 65px;
+    top: -5px;
+    left: 12px;
+}
+
+#MailForwardingRegistered
+{
+    position: relative;
+    background: url(/Images/Services/MailForwardingRegistered.png);
+    height: 54px;
+    width: 52px;
+    left: 20px;
+    top: 5px;
+}
+
+#MailForwardingBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/MailForwardingBanner.jpg);
+    height: 110px;
+    width: 940px;
+}
+
+#RoyalMailVan
+{
+    position: absolute;
+    background-image: url(/Images/RoyalMailVan.png);
+    height: 230px;
+    width: 203px;
+    top: 0;
+    right: 0;
+}
+
+#TelephoneAnsweringBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/TelephoneAnsweringBanner.jpg);
+    height: 110px;
+    width: 940px;
+}
+
+#TelephoneLandingBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/TelephoneLandingBanner.jpg);
+    height: 212px;
+    width: 940px;
+}
+
+#CallHandlingPayAsUGo
+{
+    position: relative;
+    background: url(/Images/Services/PhoneAnswering.png);
+    height: 65px;
+    width: 65px;
+    top: -10px;
+    left: 10px;
+}
+
+#CallHandlingMessenger
+{
+    position: relative;
+    background: url(/Images/Services/CallHandlingMessenger.png);
+    height: 53px;
+    width: 50px;
+    top: 5px;
+    left: 15px;
+}
+
+#CallHandlingDeliverer
+{
+    position: relative;
+    background: url(/Images/Services/CallHandlingDeliverer.png);
+    height: 52px;
+    width: 49px;
+    top: 5px;
+    left: 15px;
+}
+
+#CallDivertPayAsUGo
+{
+    position: relative;
+    background: url(/Images/Services/CallDivertPayAsUGo.png);
+    height: 54px;
+    width: 49px;
+    top: 5px;
+    left: 15px;
+}
+
+#WomanOnPhone
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url(/Images/WomanOnPhone.jpg);
+    height: 230px;
+    width: 203px;
+}
+
+#FaxLandingBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/FaxLandingBanner.jpg);
+    height: 213px;
+    width: 940px;
+}
+
+#FaxDivert
+{
+    position: relative;
+    background: url(/Images/Services/FaxDivert.gif);
+    height: 56px;
+    width: 55px;
+    top: 0;
+    left: 13px;
+}
+
+#Fax2Email
+{
+    position: relative;
+    background: url(/Images/Services/Fax2Email.gif);
+    height: 44px;
+    width: 61px;
+    left: 14px;
+    top: 0;
+}
+
+#AccountancyBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/AccountancyBanner.jpg);
+    height: 213px;
+    width: 940px;
+}
+
+.accountancyFooter
+{
+    color: #333;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+#WomanWithGlasses
+{
+    position: relative;
+    background-image: url(/Images/WomanWithGlasses.jpg);
+    background-repeat: no-repeat;
+    height: 230px;
+    width: 203px;
+}
+
+#FaxServicesBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/FaxServicesBanner.jpg);
+    height: 110px;
+    width: 940px;
+}
+
+#WomanWithFax
+{
+    background-image: url(/Images/WomanWithFax.jpg);
+    background-repeat: no-repeat;
+    height: 230px;
+    width: 203px;
+}
+
+#ContactUsBanner
+{
+    position: relative;
+    background-image: url(/Images/Banners/ContactUsBanner.jpg);
+    height: 111px;
+    width: 940px;
+}
+
+#googleMapBox
+{
+    width: 100%;
+    height: 167px;
+    border: solid 1px #FFF;
+}
+
+#yourDetails
+{
+    position: relative;
+    background-repeat: repeat-x;
+    padding: 23px;
+}
+
+.shadedInput
+{
+    background-image: url(/Images/ShadedInput.gif);
+    border: solid 1px #CCC;
+    background-repeat: repeat-x;
+    line-height: 22px;
+    padding: 0 5px;
+}
+
+.ServiceOptionsContainer
+{
+    position: relative;
+    background-image: url(/Images/ShadedBackground.png);
+    background-repeat: repeat-x;
+    padding: 20px;
+}
+
+#TotalPriceContainer
+{
+    position: absolute;
+    right: 0;
+    top: 20px;
+    font-size: 1.42em;
+    font-weight: 600;
+    padding: 0 10px 0 0;
+}
+
+.ServiceOptionsContainer .ServiceOptionsInnerContainer
+{
+    position: relative;
+    width: 735px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+    .ServiceOptionsContainer .ServiceOptionsInnerContainer .OptionsBox
+    {
+        background-color: #FBFBFB;
+        padding: 10px 25px;
+    }
+
+.serviceOptionsImage
+{
+    position: absolute;
+    top: 0;
+    left: -85px;
+}
+
+#termsAndConditionsBox
+{
+    background-color: #EEE;
+    padding: 20px;
+}
+
+#basketTotalBox
+{
+    text-align: right;
+    padding: 20px;
+}
+
+#shopppedWithUsBeforeBox
+{
+    width: 717px;
+    margin: 20px auto;
+    padding: 0 12px;
+}
+
+#yourDetailsInner
+{
+    width: 717px;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.yourDetailsFull
+{
+    padding-left: 12px;
+}
+
+.yourDetailsLeft
+{
+    width: 310px;
+    float: left;
+    padding-left: 12px;
+}
+
+.yourDetailsRight
+{
+    width: 305px;
+    float: left;
+}
+
+#paymentInner
+{
+    width: 730px;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.paymentC1
+{
+    width: 450px;
+    float: left;
+    padding-left: 12px;
+}
+
+.paymentC2
+{
+    width: 160px;
+    float: left;
+    text-align: center;
+}
+
+.paymentC3
+{
+    width: 85px;
+    float: left;
+    text-align: center;
+    font-size: .7em;
+}
+
+.lightGreyBox
+{
+    background-color: #EFEFEF;
+    text-align: center;
+    padding: 25px 0 21px;
+}
+
+.specialOfferContainer
+{
+    border: solid 2px #900;
+    position: relative;
+    background-color: #EFEFEF;
+    padding: 14px 14px 14px 0;
+}
+
+.specialOfferCircle
+{
+    background-image: url(/Images/Offer5.png);
+    height: 91px;
+    width: 91px;
+    position: absolute;
+    top: -2px;
+    right: -2px;
+}
+
+.specialOfferLeft
+{
+    width: 14%;
+    text-align: center;
+    float: left;
+}
+
+.specialOfferRight
+{
+    width: 86%;
+    float: left;
+}
+
+    .specialOfferRight h2
+    {
+        font-size: 1.35em;
+    }
+
+.newsItemBox
+{
+    padding: 15px;
+}
+
+.lightGrey
+{
+    color: #999;
+}
+
+.newsPagerSelected, .newsPagerNotSelected
+{
+    display: block;
+    float: left;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    border: none;
+    text-align: center;
+    margin: 0 2px;
+}
+
+.newsPagerSelected
+{
+    background-color: #900;
+    color: #FFF;
+}
+
+.newsPagerNotSelected
+{
+    background-color: #EFEFEF;
+    color: #333;
+}
+
+#competitionTablesContainer
+{
+    position: relative;
+    background-repeat: repeat-x;
+    padding: 10px 14px;
+}
+
+.competitionPopup
+{
+    background-color: #FFF;
+    width: 940px;
+    position: absolute !important;
+    left: -50px !important;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 13px;
+}
+
+.OptionsContainerBox
+{
+    background-color: #FBFBFB;
+}
+
+.meetingGridItem
+{
+    border: solid 4px #EDECED;
+    background-color: #EFEFEF;
+    position: relative;
+    padding: 4px;
+}
+
+.meetingImageContainer
+{
+    border: solid 2px #D1D1D1;
+    float: left;
+    position: relative;
+    background-color: #FFF;
+}
+
+.meetingImageContainerInner
+{
+    width: 170px;
+    height: 113px;
+    overflow: hidden;
+    background-color: #FFF;
+    margin: 5px;
+}
+
+.meetingsMiddleColumn
+{
+    float: left;
+    min-height: 10px;
+    width: 200px;
+    padding: 10px 25px;
+}
+
+.meetingsRightColumn
+{
+    padding-top: 10px;
+    float: right;
+    width: 175px;
+    min-height: 10px;
+}
+
+.meetingsButton
+{
+    position: absolute;
+    right: 8px;
+    bottom: 5px;
+}
+
+.MeetingRoomContainer
+{
+    position: relative;
+    padding: 18px 15px;
+}
+
+.meetingImagesContainer
+{
+    width: 205px;
+    float: left;
+    position: relative;
+}
+
+.MeetingImageBoxLarge
+{
+    min-height: 150px;
+    overflow: hidden;
+}
+
+.MeetingsImageBoxThumbnails
+{
+    padding-top: 4px;
+}
+
+.smallMeetingImage
+{
+    width: 25%;
+    height: 50px;
+}
+
+.meetingRoomMainTextRight
+{
+    float: right;
+    width: 365px;
+}
+
+#mapBox
+{
+    height: 157px;
+    width: 235px;
+}
+
+#mapboxOuter
+{
+    border: 2px solid #EEE;
+    float: right;
+    padding: 4px;
+}
+
+.viewOrdersTable
+{
+    text-align: left;
+    color: #333;
+}
+
+    .viewOrdersTable td
+    {
+        padding: 5px 20px;
+    }
+
+.sitemapImage
+{
+    height: 20px;
+    width: 20px;
+    margin-right: 15px;
+}
+
+#treeView img
+{
+    height: 20px !important;
+    width: 20px !important;
+}
+
+.siteMap
+{
+    list-style-type: none;
+}
+
+    .siteMap ul li
+    {
+        list-style-type: none;
+        font-size: 11pt;
+        font-weight: 700;
+        margin: 10px;
+    }
+
+        .siteMap ul li ul li
+        {
+            margin-left: 40px;
+            list-style-type: none;
+            font-size: 9pt;
+            font-weight: 700;
+        }
+
+.packageSizeTable
+{
+    width: 100%;
+    border: 0;
+}
+
+    .packageSizeTable tr td
+    {
+        border: 0;
+        margin: 0;
+        padding: 5px;
+    }
+
+.validationSummary
+{
+    height: 35px;
+}
+
+    .validationSummary ul
+    {
+        display: none;
+        height: 20px;
+    }
+
+.hide
+{
+    display: none;
+}
+
+#basketTotalBox table, .fr, .specialOfferAddOfferButton
+{
+    float: right;
+}
+
+h1, h2, h3, .spannedH2Style
+{
+    color: #900;
+    font-size: 1.42em;
+    font-weight: 600;
+}
+
+.headingTextSmall, #PackageDetailsContainer .SelectedProductContainer h4
+{
+    font-size: 1.1em;
+}
+
+a img, .ViewDetails a img, .specialOfferAddOfferButton img, .meetingsButton a img
+{
+    border: none;
+}
+
+.fl, .SecuredByThawteBox
+{
+    float: left;
+}
+
+.specialOffersButton, .ViewDetails
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+p .carouselAnchor, .blackH2
+{
+    color: #333;
+}
+
+#breadcrumb, .watermarked
+{
+    color: #666;
+}
+
+.smallNav ul li a:link, .smallNav ul li a:visited, .smallNav ul li a:hover
+{
+    color: #FFF;
+}
+
+#headerWrapper #header #callUsBox #callUsLine2, #newsletterBox
+{
+    font-size: 1em;
+}
+
+#TwoColumnWrapper, #whyChooseW1, .packageDataContainer
+{
+    position: relative;
+}
+
+#footerBottomWrapper #footerBottom #footerCraftedLogo a img, .slideshow img, .overviewImage a img
+{
+    border: 0;
+}
+
+
+
+
+
+ul.tabs
+{
+    list-style: none;
+    border-bottom: 1px solid #c3c2c3;
+    height: 34px;
+    margin: 0 !important;
+    padding: 0;
+}
+
+    ul.tabs li
+    {
+        float: left;
+        text-indent: 0;
+        list-style-image: none !important;
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    ul.tabs a
+    {
+        display: block;
+        height: 34px;
+        line-height: 34px;
+        width: 134px;
+        text-align: center;
+        text-decoration: none;
+        position: relative;
+        top: 1px;
+        margin: 0 3px 0 0;
+        padding: 0;
+    }
+
+        ul.tabs a:active
+        {
+            outline: none;
+        }
+
+        ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a
+        {
+            cursor: default !important;
+        }
+
+        ul.tabs a.T1
+        {
+            background-position: 0 0;
+            width: 120px;
+        }
+
+            ul.tabs a.T1.current
+            {
+                background-position: 0 -34px;
+            }
+
+        ul.tabs a.T2
+        {
+            background-position: -124px 0;
+            width: 109px;
+        }
+
+            ul.tabs a.T2.current
+            {
+                background-position: -124px -34px;
+            }
+
+    ul.tabs .news-title a
+    {
+        text-align: left !important;
+    }
+
+.panes .pane
+{
+    display: none;
+}
+
+.panes .outer
+{
+    display: none;
+    border: 1px solid #c3c2c3;
+    border-top: 0;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.panes h3
+{
+    font-size: 1em;
+    color: #333;
+}
+
+.panes .lightGrey
+{
+    font-size: .9em;
+}
+
+.panes .newsText
+{
+    color: #666;
+}
+
+ul.list-news li
+{
+    list-style-type: none !important;
+    text-decoration: none;
+    font-size: 11px;
+    color: #666;
+    margin: 0;
+    padding: 5px 0;
+}
+
+    ul.list-news li a
+    {
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    ul.list-news li.rssalt
+    {
+        background-color: #efefef;
+    }
+
+
+
+.ToolTipContainer
+{
+    position: relative;
+    float: left;
+}
+
+.ToolTipHover
+{
+    position: relative;
+    background: url(/Images/ToolTipHover.png) no-repeat 10px 0;
+    background-repeat: no-repeat;
+    height: 22px;
+    width: 40px;
+    top: -2px;
+}
+
+.ToolTip
+{
+    display: none;
+    position: absolute;
+    top: -7px;
+    left: 50px;
+    float: left;
+    width: 300px;
+}
+
+.ToolTipTop
+{
+    background-image: url(/Images/ToolTipTop.gif);
+    background-repeat: no-repeat;
+    height: 9px;
+    width: 250px;
+}
+
+.ToolTipBody
+{
+    background-color: #CBEBF7;
+    width: 230px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.ToolTipBottom
+{
+    background-image: url(/Images/ToolTipBottom.gif);
+    background-repeat: no-repeat;
+    height: 9px;
+    width: 250px;
+}
+
+.ToolTipArrow
+{
+    background-image: url(/Images/ToolTipArrow.png);
+    background-repeat: no-repeat;
+    height: 36px;
+    width: 14px;
+    float: left;
+}
+
+
+.about-us-menu
+{
+}
+
+    .about-us-menu h2
+    {
+        padding: 12px 19px 4px;
+        display: block;
+    }
+
+    .about-us-menu ul
+    {
+        list-style: none;
+    }
+
+        .about-us-menu ul li
+        {
+            background-color: #EFEFEF;
+            border-bottom: 1px solid #fff;
+            list-style: none;
+            outline: none;
+        }
+
+            .about-us-menu ul li a
+            {
+                color: #333;
+                display: block;
+                padding: 8px 19px;
+            }
+
+                .about-us-menu ul li a:hover, .about-us-menu ul li:hover a, .about-us-menu ul li:hover a, .about-us-menu ul li.selected a
+                {
+                    background-color: #990000;
+                    text-decoration: none;
+                    color: #fff;
+                }
+
+#divFacebookLike
+{
+    height: 18px;
+    width: 60px;
+    margin-top: -43px;
+    float: right;
+    margin-right: -10px;
+}
+
+.social-media-follow
+{
+    float: right;
+    margin-top: 10px;
+}
+
+    .social-media-follow a
+    {
+        text-indent: -999em;
+        overflow: hidden;
+        font-size: 0px;
+        line-height: 0px;
+        display: block;
+        height: 32px;
+        width: 32px;
+        margin: 0px;
+        padding: 0px 2px;
+        color: #990000;
+        cursor: pointer;
+        float: left;
+        text-decoration: none;
+        background: url('/Images/social-buttons.png') no-repeat;
+    }
+
+        .social-media-follow a.facebook-follow
+        {
+            background-position: 0 -96px !important;
+        }
+
+        .social-media-follow a.twitter-follow
+        {
+            background-position: 0 -64px !important;
+        }
+
+        .social-media-follow a.linkedin-follow
+        {
+            background-position: 0px -32px !important;
+        }
+
+        .social-media-follow a.googleplus-follow
+        {
+            background-position: 0px 0px !important;
+        }
+
+
+a.small-twitter-icon
+{
+    text-indent: -999em;
+    overflow: hidden;
+    font-size: 0px;
+    line-height: 0px;
+    display: block;
+    height: 16px;
+    width: 16px;
+    margin: 0px;
+    color: #990000;
+    cursor: pointer;
+    float: left;
+    text-decoration: none;
+    background: Transparent url(/Images/social-buttons.png) no-repeat;
+    background-position: 0 -128px !important;
+}
+
+    .social-media-follow a:hover, a.small-twitter-icon:hover
+    {
+        opacity: 0.8;
+        filter: alpha(opacity=80);
+    }
+
+/* New CSS JD */
+
+#bottomSmallNav
+{
+    width: 880px;
+}
+
+#footerMiddleWrapper #footerMiddle #mainFooterList li ul li
+{
+    width: auto;
+}
+
+#navTab li:last-child
+{
+    margin: 0 !important;
+}
+
+.royalmail
+{
+    float: right;
+    width: 210px;
+    text-align: right;
+}
+
+    .royalmail span
+    {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 11px;
+    }
+
+    .royalmail img
+    {
+        margin-right: 20px;
+    }
+
+/* New CSS LM */
+.admin-mode #mapContainer
+{
+    height: 800px;
+}
+
+#mapContainer
+{
+    width: 100%;
+    height: 555px;
+    position: relative;
+}
+
+    #mapContainer #mapIframe
+    {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+#mapInner
+{
+    width: 940px;
+    margin: 0 auto;
+    position: relative;
+}
+
+    #mapInner #mapOverlay
+    {
+        background: #FFF;
+        width: 470px;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0px 0px 20px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow: 0px 0px 20px rgba(50, 50, 50, 0.75);
+        box-shadow: 0px 0px 20px rgba(50, 50, 50, 0.75);
+    }
+
+        #mapInner #mapOverlay .inner
+        {
+            padding: 20px;
+            overflow: auto;
+        }
+
+        #mapInner #mapOverlay .podContent
+        {
+            background: #FFF;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        #mapInner #mapOverlay .greyLine
+        {
+            border: 0;
+        }
+
+        #mapInner #mapOverlay .contact-form
+        {
+            width: 300px;
+        }
+
+        #mapInner #mapOverlay .podContent a
+        {
+            color: #333;
+        }
+
+.contact-form
+{
+    background: #FFF;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+
+#rightColumn .contact-form
+{
+    padding-top: 29px;
+}
+
+#rightColumn .home-right-col .contact-form
+{
+    padding-top: 0;
+}
+
+#topSmallNav ul
+{
+    font-size: 14px;
+}
+
+    #topSmallNav ul li
+    {
+        border: 0;
+    }
+
+        #topSmallNav ul li a:hover
+        {
+            text-decoration: underline;
+        }
+
+        #topSmallNav ul li#buy-online
+        {
+            color: #F6EB13;
+            font-size: 16px;
+        }
+
+            #topSmallNav ul li#buy-online span
+            {
+                color: #FFFFFF;
+            }
+
+.social-media-follow a.facebook-follow
+{
+    background: url('/Images/facebook.png') no-repeat 0 0;
+    background-position: 0 0 !important;
+}
+
+.social-media-follow a.twitter-follow
+{
+    background: url('/Images/twitter.png') no-repeat 0 0;
+    background-position: 0 0 !important;
+}
+
+.social-media-follow a.googleplus-follow
+{
+    background: url('/Images/googleplus.png') no-repeat 0 0;
+    background-position: 0 0 !important;
+}
+
+.social-media-follow a.linkedin-follow
+{
+    background: url('/Images/linkedin.png') no-repeat 0 0;
+    background-position: 0 0 !important;
+}
+
+td.norton-logo img
+{
+    width: 70px;
+}
+
+.footer-list
+{
+    width: 940px;
+}
+
+    .footer-list .footer-list-pod
+    {
+        float: left;
+        margin-left: 41px;
+        max-width: 124px;
+    }
+
+.footer-list-pod:first-child
+{
+    margin-left: 0;
+}
+
+.footer-list .footer-list-pod ul
+{
+}
+
+    .footer-list .footer-list-pod ul li
+    {
+        list-style-type: none;
+    }

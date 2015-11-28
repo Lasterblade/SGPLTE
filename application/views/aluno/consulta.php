@@ -29,9 +29,9 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Login</th>
-                        <th>Senha</th>
-                        <th>Perfil de aluno</th> 
+                        <th>Nome Aluno</th> 
+                        <th>CPF Pessoa</th>
+                        <th>Matricula Aluno</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -60,12 +60,13 @@
                       
                       <tr>
                         <td><?php echo $value->idaluno; ?></td>
-                        <td><?php echo $value->idpessoa; ?></td>
-                        <td><?php echo $value->idmatricula; ?></td>
-                        <td><?php echo $value->idusuario; ?>
+                       <td><?php echo $value->nome; ?>
+                        <td><?php echo $value->cpf; ?></td> 
+                        <td><?php echo $value->matricula_idmatricula; ?>
+                        
                         <div  class="btn-group" style="float: right;">
-                          <a href="<?php echo base_url('aluno/update').'/'.$value->idaluno; ?>"><button type="button" class="btn btn-primary "><i class="fa fa-edit">Editar</i></button></a>
-                           <a href="#myModal<?php echo $value->idaluno ?>" data-toggle="modal"><button type="button" class="btn btn-danger"><i class="fa fa-close "> Excluir</i></button></a>
+                           <a href="<?php echo base_url('aluno/update').'/'.$value->idaluno; ?>"><button  type="button" class="btn btn-primary "><i class="fa fa-edit">Editar</i></button></a>
+                           <a href="#myModal<?php echo $value->idaluno ?>" data-toggle="modal"><button   type="button" class="btn btn-danger"><i class="fa fa-close "> Excluir</i></button></a>
                         </div>
                         </td>
                       </tr>

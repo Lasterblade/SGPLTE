@@ -43,13 +43,8 @@ if (! defined('BASEPATH')) exit('No direct Script access allowed');
             $this->data_exclusao = $data_exclusao;
         }
         
-        public function Cadastrar()
-        {
-            $strSql = "insert into periodo (descricao) values ('$this->descricao');";
-            $this->db->query($strSql);
-        }
         
-        public function consultar()
+        public function Consultar()
         {
             $this->db->select('idperiodo,descricao,data_exclusao');
     		$this->db->where('data_exclusao',null);
@@ -57,11 +52,63 @@ if (! defined('BASEPATH')) exit('No direct Script access allowed');
     		return $this->db->get()->result();
         }
         
-        public function Excluir()
-        {
-            $strSql = "update periodo set data_exclusao ='".date("d/m/Y H:i")."' where idperiodo = '$this->idPeriodo'";
-            $this->db->query($strSql);
+        public function Consultar_Id($id){
+        
+            $id = addslashes($id);    
+    		return $this->db->get_where('periodo',array('idperiodo'=>$id))->row();
+    		
         }
         
+        public function Inserir(){
+            
+           	$object = array(
+    			'idperiodo' => $this->GetidPeriodo(),
+    			'descricao' => $this->GetDescricao()
+    		);
+    				
+    		$query = $this->db->insert('periodo',$object);
+    				
+    		if($query){
+    			$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+    	                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    	                                      <h4>	<i class="icon fa fa-check"></i> Alerta!</h4>
+    	                                      Seu produto foi cadastrado com sucesso..</div>');
+    			redirect('periodo');
+        
+            }
+        }
+        
+        public function Update(){
+
+			$object = array(
+    			'idperiodo' => $this->GetidPeriodo(),
+    			'descricao' => $this->GetDescricao()
+    		);
+			
+		    $this->db->where('idperiodo', $this->GetidPeriodo());
+			if($this->db->update('periodo',$object)){
+				$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                             <h4><i class="icon fa fa-check"></i> Alerta!</h4> 
+                                             Seu produto foi Alterado com sucesso..</div>');
+				redirect('periodo');
+			}
+        }
+        
+        public function Excluir(){
+            
+            $object = array(
+				'data_exclusao' => $this->GetDataExclusao()
+			);
+			
+		    $this->db->where('idperiodo', $this->Getidperiodo());
+			if($this->db->update('periodo',$object)){
+				$this->session->set_flashdata('sucesso','<div class="alert alert-success alert-dismissable">
+                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                             <h4><i class="icon fa fa-check"></i> Alerta!</h4>
+                                             Seu produto foi deletado com sucesso..</div>');
+				redirect('periodo');
+			}
+    }
     }
 ?>

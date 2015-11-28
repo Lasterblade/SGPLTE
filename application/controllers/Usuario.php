@@ -16,6 +16,7 @@ class Usuario extends CI_Controller
 	    $data['content'] = 'usuario/consulta';
 	    
 		$this->load->view('/template/header_data');
+		$this->load->view('/template/aside');
 	    $this->load->view('usuario',$data);
 	    $this->load->view('/template/footer_data');
 	}
@@ -36,6 +37,7 @@ class Usuario extends CI_Controller
 			$data['content'] = 'usuario/form';
 			
 			$this->load->view('/template/header');
+			$this->load->view('/template/aside');
 			$this->load->view('usuario',$data);
 			$this->load->view('/template/footer');
 			
@@ -44,18 +46,16 @@ class Usuario extends CI_Controller
 			if($this->input->post()){
 				
 				$login = addslashes($this->input->post('login'));
-				$senha = addslashes($this->input->post('senha'));
+				$senha = md5($this->input->post('senha'));
 				$perfilusuario =  ($this->input->post('perfilusuario'));
 				
 				$this->Usuario_model->Setlogin($login);
 				$this->Usuario_model->Setsenha($senha);
 				$this->Usuario_model->SetPerfil($perfilusuario);
+				
 				$this->Usuario_model->inserir();
-		
 			}
 		}
-		
-		
 	}
 	
 	public function check_perfilusuario($str)
@@ -87,15 +87,16 @@ class Usuario extends CI_Controller
 			$data['content'] = 'usuario/update';
 			$data['perfilusuario']=  $this->Perfilusuario_model->consultar();
 			$data['editar']= $this->Usuario_model->consultar_id($id);
-			
-			$this->load->view('/template/header');
-			$this->load->view('usuario',$data);
+
+	     	$this->load->view('/template/header');
+			$this->load->view('/template/aside');
+            $this->load->view('usuario',$data);
 			$this->load->view('/template/footer');
 			
 		}
 		else{
 			$login = addslashes($this->input->post('login'));
-			$senha = addslashes($this->input->post('senha'));
+			$senha = md5($this->input->post('senha'));
 			$perfilusuario = addslashes($this->input->post('perfilusuario'));
 			
 			$this->Usuario_model->SetidUsuario($id);
@@ -108,11 +109,18 @@ class Usuario extends CI_Controller
 		
 	}
 	public function excluir($id){
-			$data_exclusao =  date("d/m/Y H:i");
+			$data_exclusao =  date('Y-m-d H:i:s');
 			$this->Usuario_model->SetidUsuario($id);	
 			$this->Usuario_model->SetDataExclusao($data_exclusao);
 			$this->Usuario_model->excluir();
 			
+	}
+	
+	public function perfil(){
+			
+			print_r($this->session->userdata());
+			
+			$aluno = $this->session->userdata('aluno');
 	}
 	
 }

@@ -8,13 +8,17 @@ class Perfilusuario extends CI_Controller
 	   // $this->load->helper('');
 	  //$this->load->library('form_validation');
 	  $this->load->model('Perfilusuario_model');
+	  $this->load->model("Usuario_model");
+	  $this->Usuario_model->logged();
 	}
 	public function index()
 	{
 		
 		$data['conteudo'] = $this->Perfilusuario_model->consultar();
 	    $data['content'] = 'perfilusuario/consulta';
+		
 		$this->load->view('/template/header_data');
+		$this->load->view('/template/aside');
 	    $this->load->view('perfilusuario',$data);
 	    $this->load->view('/template/footer_data');
 	}
@@ -25,9 +29,11 @@ class Perfilusuario extends CI_Controller
 		
 		if ($this->form_validation->run() == FALSE)
 		{
-			//redirect('perfilusuario');
-			$this->load->view('/template/header');
+			
 			$data['content'] = 'perfilusuario/form';
+			
+			$this->load->view('/template/header');
+			$this->load->view('/template/aside');
 			$this->load->view('perfilusuario',$data);
 			$this->load->view('/template/footer');
 			
@@ -53,10 +59,11 @@ class Perfilusuario extends CI_Controller
 		
 		if ($this->form_validation->run() == FALSE)
 		{
-			//redirect('perfilusuario');
-			$this->load->view('/template/header');
 			$data['content'] = 'perfilusuario/update';
 			$data['editar']= $this->Perfilusuario_model->consultar_id($id);	
+			
+			$this->load->view('/template/header');
+			$this->load->view('/template/aside');
 			$this->load->view('perfilusuario',$data);
 			$this->load->view('/template/footer');
 			
@@ -73,7 +80,7 @@ class Perfilusuario extends CI_Controller
 		
 	}
 	public function excluir($id){
-			$data_exclusao =  date("d/m/Y H:i");
+			$data_exclusao =  date('Y-m-d H:i:s');
 			$this->Perfilusuario_model->SetidPerfilUsuario($id);	
 			$this->Perfilusuario_model->SetDataExclusao($data_exclusao);
 			$this->Perfilusuario_model->excluir();

@@ -1,0 +1,75 @@
+.que {
+    clear: left;
+    text-align: left;
+    margin: 0 auto 1.8em auto;
+}
+
+.que .info{
+	float: left;
+    width: 7em;
+    padding: 0.5em;
+    margin-bottom: 1.8em;
+    background-color: #eee;
+    border: 1px solid #dcdcdc;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.que h3.no {
+    margin: 0;
+    font-size: 0.8em;
+    line-height: 1;
+}
+
+.que .info>div {
+    font-size: 0.8em;
+    margin-top: 0.7em;
+}
+.que .content {
+    margin: 0 0 0 8.5em;
+}
+.que .formulation {
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    color: #3a87ad;
+    color: #3d3d3d;
+}
+
+.accesshide {
+    position: absolute;
+    left: -10000px;
+    font-weight: normal;
+    font-size: 1em;
+}
+.que .qtext {
+    margin-bottom: 1.5em;
+}
+.que.essay .qtype_essay_response.readonly {
+    background-color: white;
+}
+.que.essay .qtype_essay_response {
+    min-height: 3em;
+}
+input[type="radio"] {
+    display:none;
+}
+
+input[type="radio"] + label {
+    color:#287acc;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+}
+
+input[type="radio"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url(http://webdesigntutsplus.s3.amazonaws.com/tuts/391_checkboxes/check_radio_sheet.png) -38px top no-repeat;
+    cursor:pointer;
+}
+
+input[type="radio"]:checked + label span {
+    background:url(http://webdesigntutsplus.s3.amazonaws.com/tuts/391_checkboxes/check_radio_sheet.png) -57px top no-repeat;
+}

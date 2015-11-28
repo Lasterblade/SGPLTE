@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col-xs-12">
                <?php echo $this->session->flashdata('sucesso'); ?>
-                <a href="<?php echo base_url('curso/cadastrar_curso')?>"><button type="button" class="btn btn-success "><i class="fa fa-save">Cadastrar um novo Curso</i></button></a><br /><br />
+                <a href="<?php echo base_url('Curso/insert')?>"><button type="button" class="btn btn-success "><i class="fa fa-save">Cadastrar um novo Curso</i></button></a><br /><br />
               <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">Consulta de Curso</h3>

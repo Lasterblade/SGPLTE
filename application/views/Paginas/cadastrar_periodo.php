@@ -32,11 +32,6 @@
                   <?php echo validation_errors(); ?>
                   
                     <!-- Campos -->
-                    <div class="form-group" action="insert">
-                      <label>Id do Período</label>
-                      <input type="text" class="form-control" name="id" placeholder="Id ..." disabled >
-                    </div>
-                    
                     
                     <div class="form-group" action="insert">
                       <label>Descrição do Período</label>

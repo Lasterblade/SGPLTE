@@ -31,18 +31,14 @@
                   <?php echo form_open('usuario/insert'); ?>
                   <?php echo validation_errors(); ?>
                   
-                    <!-- text input -->
-                    <div class="form-group" action="insert">
-                      <label>Id</label>
-                      <input type="text" class="form-control" name="id" placeholder="Numero ..." disabled="">
-                    </div>
+
                     <div class="form-group">
                       <label>Login</label>
                       <input type="text" class="form-control" name="login" placeholder="Entre com o login ...">
                     </div>
                     <div class="form-group">
                       <label>Senha</label>
-                      <input type="text" class="form-control" name="senha" placeholder="Entre com a senha...">
+                      <input type="password" class="form-control" name="senha" placeholder="Entre com a senha...">
                     </div>
                     <div class="form-group has-warning">
                     <label>Perfil de Usuario</label>

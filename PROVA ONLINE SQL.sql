@@ -4,286 +4,385 @@
   Objetivo:  Executar Query para criação da base dados do sistema prova Online.
 */
 
-drop database provaonline;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-create database provaonline;
+-- -----------------------------------------------------
+-- Schema provaonline
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `provaonline` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `provaonline` ;
 
-use provaonline;
+-- -----------------------------------------------------
+-- Table `provaonline`.`perfilusuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`perfilusuario` (
+  `idperfilusuario` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `descricao` VARCHAR(45) NULL COMMENT '',
+  `data_exclusao` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`idperfilusuario`)  COMMENT '')
+ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS provaonline.periodo 
-(
-  idperiodo INT(11) primary key auto_increment ,
-  descricao VARCHAR(70) NOT NULL,
-  data_exclusao varchar(100) default null
-)
+
+-- -----------------------------------------------------
+-- Table `provaonline`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`usuario` (
+  `idusuario` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `login` VARCHAR(45) NULL COMMENT '',
+  `senha` VARCHAR(45) NULL COMMENT '',
+  `perfil` INT NOT NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`idusuario`)  COMMENT '',
+  INDEX `fk_usuario_perfilusuario1_idx` (`perfil` ASC)  COMMENT '',
+  CONSTRAINT `fk_usuario_perfilusuario1`
+    FOREIGN KEY (`perfil`)
+    REFERENCES `provaonline`.`perfilusuario` (`idperfilusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `provaonline`.`pessoa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`pessoa` (
+  `idpessoa` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `nome` VARCHAR(45) NOT NULL COMMENT '',
+  `sexo` VARCHAR(45) NULL COMMENT '',
+  `data_nascimento` DATE NULL COMMENT '',
+  `rg` VARCHAR(12) NOT NULL COMMENT '',
+  `cpf` varchar(11) NOT NULL unique,
+  `email` VARCHAR(100) NOT NULL COMMENT '',
+  `telefone` VARCHAR(20) NULL COMMENT '',
+  `cep` VARCHAR(10) NULL COMMENT '',
+  `rua` VARCHAR(45) NULL COMMENT '',
+  `numero` VARCHAR(3) NULL COMMENT '',
+  `cidade` VARCHAR(25) NULL COMMENT '',
+  `bairro` VARCHAR(70) NULL COMMENT '',
+  `uf` CHAR(2) NULL COMMENT '',
+  PRIMARY KEY (`idpessoa`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `provaonline`.`curso`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`curso` (
+  `idcurso` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `descricao` VARCHAR(45) NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`idcurso`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `provaonline`.`matricula`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`matricula` (
+  `idmatricula` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `data_matricula` DATETIME NULL COMMENT '',
+  `data_exclusao` DATETIME NULL DEFAULT NULL COMMENT '',
+  PRIMARY KEY (`idmatricula`)  COMMENT '')
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-insert into periodo values (1,'Primeiro periodo',null);
-insert into periodo values (2,'Segundo periodo',null);
+AUTO_INCREMENT = 9000;
 
 
-create table perfilusuario
-(
-	idperfilusuario int primary key auto_increment,
-	descricao varchar(50) not null,
-  data_exclusao varchar(100) default null
-);
-
-insert into perfilusuario values (1,'aluno',null);
-insert into perfilusuario values (2,'professor',null);
-insert into perfilusuario values (3,'coordenador',null);
-insert into perfilusuario values (3,'coordenador',null);
-
-CREATE TABLE IF NOT EXISTS provaonline.usuario -- primeiro cadastra o usuário.
-(
-  idusuario INT(11) NOT NULL PRIMARY KEY auto_increment ,
-  login VARCHAR(45) NOT NULL ,
-  senha VARCHAR(45) NOT NULL ,
-  perfil INT(11) NOT NULL,
-	foreign key (perfil) references perfilusuario(idperfilusuario),
-	data_exclusao varchar(100) default null
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-insert into usuario  values (1,'donovan','123456',3,null);
-insert into usuario values (2,'thiago','123456',3,null);
-
-
-CREATE TABLE IF NOT EXISTS provaonline.pessoa  -- depois cadastra a pessoa.
-(
-  idpessoa INT(11) NOT NULL AUTO_INCREMENT primary key ,
-  nome VARCHAR(45) NOT NULL ,
-  sexo VARCHAR(1) NOT NULL ,
-  data_nascimento VARCHAR(45) NOT NULL ,
-  endereco VARCHAR(70) NOT NULL ,
-  cpf VARCHAR(15) NOT NULL ,
-  email VARCHAR(70) NOT NULL ,
-  telefone VARCHAR(20) NOT NULL,
-  data_exclusao varchar(100) default null
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-insert into pessoa values 
-(1,'donovan muniz de sousa','M',19941201,'rua dos agronomos','12188899900','donovansousa@yahoo.com.br','26632663',null);
+-- -----------------------------------------------------
+-- Table `provaonline`.`aluno`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`aluno` (
+  `idaluno` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `pessoa_idpessoa` INT NOT NULL COMMENT '',
+  `usuario_idusuario` INT NOT NULL COMMENT '',
+  `matricula_idmatricula` INT NOT NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`idaluno`)  COMMENT '',
+  INDEX `fk_Aluno_pessoa1_idx` (`pessoa_idpessoa` ASC)  COMMENT '',
+  INDEX `fk_Aluno_usuario1_idx` (`usuario_idusuario` ASC)  COMMENT '',
+  INDEX `fk_Aluno_matricula1_idx` (`matricula_idmatricula` ASC)  COMMENT '',
+  CONSTRAINT `fk_Aluno_pessoa1`
+    FOREIGN KEY (`pessoa_idpessoa`)
+    REFERENCES `provaonline`.`pessoa` (`idpessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Aluno_usuario1`
+    FOREIGN KEY (`usuario_idusuario`)
+    REFERENCES `provaonline`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Aluno_matricula1`
+    FOREIGN KEY (`matricula_idmatricula`)
+    REFERENCES `provaonline`.`matricula` (`idmatricula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS provaonline.curso 
-(
-  idcurso INT(11) NOT NULL primary key auto_increment ,
-  descricao VARCHAR(45) NOT NULL,
-  data_exclusao varchar(100) default null
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+-- -----------------------------------------------------
+-- Table `provaonline`.`coordenador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`coordenador` (
+  `idcoordenador` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `pessoa_idpessoa` INT NOT NULL COMMENT '',
+  `usuario_idusuario` INT NOT NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`idcoordenador`)  COMMENT '',
+  INDEX `fk_coordenador_pessoa1_idx` (`pessoa_idpessoa` ASC)  COMMENT '',
+  INDEX `fk_coordenador_usuario1_idx` (`usuario_idusuario` ASC)  COMMENT '',
+  CONSTRAINT `fk_coordenador_pessoa1`
+    FOREIGN KEY (`pessoa_idpessoa`)
+    REFERENCES `provaonline`.`pessoa` (`idpessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_coordenador_usuario1`
+    FOREIGN KEY (`usuario_idusuario`)
+    REFERENCES `provaonline`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
--- então insero um curso para me matricular.
-insert into curso values (1,'TADS',null);
+-- -----------------------------------------------------
+-- Table `provaonline`.`periodo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`periodo` (
+  `idperiodo` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `descricao` VARCHAR(45) NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`idperiodo`)  COMMENT '')
+ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS provaonline.matricula  -- aqui deve se utilizar Sequence, não por auto increment!
-(
-  matricula INT(11) NOT NULL primary key,
-  data_matricula date NOT NULL,
-  idcurso int default null,
-  foreign key (idcurso) references curso(idcurso),
-  data_exclusao varchar(100) default null
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
--- então me matriculo.
-insert into matricula values (1,20150826,1,null);
+-- -----------------------------------------------------
+-- Table `provaonline`.`turno`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`turno` (
+  `idturno` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `descricao` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`idturno`)  COMMENT '')
+ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS provaonline.aluno -- depois vincula o usuário ao aluno/professor/coordenador.
-(
-  idaluno INT(11) NOT NULL AUTO_INCREMENT primary key ,
-
-  idpessoa INT(11) NOT NULL ,
-  foreign key (idpessoa) references pessoa(idpessoa),
-
-  idmatricula INT(11) NOT NULL ,
-  foreign key (idmatricula) REFERENCES matricula(matricula),
-
-  idusuario INT(11) NOT NULL ,
-  foreign key (idusuario) references usuario(idusuario),
-  data_exclusao varchar(100) default null
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
--- insiro um aluno, com codigo 1,matricula 1, e usuario 1
-insert into aluno values (1,1,1,1,null);
-
-
-CREATE TABLE IF NOT EXISTS provaonline.coordenador -- depois vincula o usuário ao aluno/professor/coordenador.
-(
-  idcoordenador INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-
-  idpessoa INT(11) NOT NULL ,
-  foreign key (idpessoa) references pessoa(idpessoa),
-
-  idusuario INT(11) NOT NULL,
-	foreign key (idusuario) references usuario(idusuario),
-	  data_exclusao varchar(100) default null
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+-- -----------------------------------------------------
+-- Table `provaonline`.`turma`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`turma` (
+  `idturma` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `descricao` VARCHAR(45) NULL COMMENT '',
+  `data_exclusao` VARCHAR(45) NULL COMMENT '',
+  `curso_idcurso` INT NOT NULL COMMENT '',
+  `periodo_idperiodo` INT NOT NULL COMMENT '',
+  `turno_idturno` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`idturma`)  COMMENT '',
+  INDEX `fk_turma_curso1_idx` (`curso_idcurso` ASC)  COMMENT '',
+  INDEX `fk_turma_periodo1_idx` (`periodo_idperiodo` ASC)  COMMENT '',
+  INDEX `fk_turma_turno1_idx` (`turno_idturno` ASC)  COMMENT '',
+  CONSTRAINT `fk_turma_curso1`
+    FOREIGN KEY (`curso_idcurso`)
+    REFERENCES `provaonline`.`curso` (`idcurso`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_turma_periodo1`
+    FOREIGN KEY (`periodo_idperiodo`)
+    REFERENCES `provaonline`.`periodo` (`idperiodo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_turma_turno1`
+    FOREIGN KEY (`turno_idturno`)
+    REFERENCES `provaonline`.`turno` (`idturno`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS provaonline.disciplinas
-(
-  iddisciplina INT(11) NOT NULL primary key auto_increment ,
-  descricao VARCHAR(45) NOT NULL,
-  idcurso int not null,
-  foreign key (idcurso) references curso(idcurso),
-  idperiodo int,
-  foreign key(idperiodo) references periodo(idperiodo),
-  data_exclusao varchar(100) default null
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-insert into disciplinas values(1,'Matemática Discreta I',1,1,null);
-insert into disciplinas values(2,'Banco de dados',1,2,null);
-
-create table turno
-(
-	idturno int primary key auto_increment,
-	descricao varchar(100) not null,
-	data_exclusao varchar(100) default null
-);
-
-insert into turno values (1,'Dia',null);
-insert into turno values (2,'Noite',null);
-
-CREATE TABLE IF NOT EXISTS provaonline.turma 
-(
-  idturma INT(11) NOT NULL primary key auto_increment ,
-
-  idturno INT(11) NOT NULL ,
-  foreign key (Idturno) REFERENCES turno(idturno),
-
-   idcurso INT(11) NOT NULL ,
-   foreign key (Idcurso) references curso(idcurso),
-
-   idperiodo INT(11) NOT NULL ,
-	 foreign key(Idperiodo) references periodo(idperiodo),
-	 	data_exclusao varchar(100) default null
- )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
--- turma 1,turno 1, curso 1, 2 periodo 
-insert into turma values (1,1,1,2,null);
-
--- depois vincula o usuário ao aluno/professor/coordenador.
-CREATE TABLE IF NOT EXISTS provaonline.professor 
-(
-idprofessor INT(11) NOT NULL primary key,
-  
-idpessoa INT(11) NOT NULL ,
-foreign key (idpessoa) references pessoa(idpessoa),    
-  
-idusuario INT(11) NOT NULL,
-FOREIGN key (idusuario) references usuario(idusuario),
-
-matricula INT(11) NOT NULL,
-foreign key (matricula) REFERENCES matricula(matricula),
-data_exclusao varchar(100) default null
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
--- Inseri o professor, cujo codigo e 1, de pessoa tb e 1, usuario tb e 1, e matricula e 1 tb
-insert into professor values (1,1,1,1,null);
+-- -----------------------------------------------------
+-- Table `provaonline`.`disciplina`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`disciplina` (
+  `iddisciplina` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `descricao` VARCHAR(45) NULL COMMENT '',
+  `turma_idturma` INT NOT NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`iddisciplina`)  COMMENT '',
+  INDEX `fk_disciplina_turma1_idx` (`turma_idturma` ASC)  COMMENT '',
+  CONSTRAINT `fk_disciplina_turma1`
+    FOREIGN KEY (`turma_idturma`)
+    REFERENCES `provaonline`.`turma` (`idturma`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
--- essa tabela e responsavel pelas disciplinas do professor.
-create table if not exists provaonline.disciplinasprofessor
-(
- Iddisciplinasprofessor int(11) primary key auto_increment,
-
- Idprofessor int(11) not null, 
- foreign key (Idprofessor) references professor(idprofessor),
-
- disciplina INT(11) not null, 
- foreign key (disciplina) references disciplinas(iddisciplina),
- data_exclusao varchar(100) default null
-);
-
--- Idprofessor,disciplina
-insert into disciplinasprofessor values (1,1,2,null);
-
-
--- Tabela com as disciplinas que estão sendo cursadas
-CREATE TABLE IF NOT EXISTS provaonline.cursando 
-(
-  idCursando int primary key auto_increment,
-
-  idaluno INT(11) NOT NULL ,
-  foreign key (idaluno) references aluno(idaluno),
- 
-  idmatricula INT(11) NOT NULL ,
-  foreign key (idmatricula) references matricula(matricula),
-
-  iddisciplina INT(11) NOT NULL,
-  foreign key (iddisciplina) references disciplinas(iddisciplina),
-   data_exclusao varchar(100) default null
-
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
+-- -----------------------------------------------------
+-- Table `provaonline`.`professor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`professor` (
+  `idprofessor` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `graduacao` VARCHAR(45) NULL COMMENT '',
+  `pessoa_idpessoa` INT NOT NULL COMMENT '',
+  `usuario_idusuario` INT NOT NULL COMMENT '',
+  `matricula_idmatricula` INT NOT NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`idprofessor`)  COMMENT '',
+  INDEX `fk_professor_pessoa1_idx` (`pessoa_idpessoa` ASC)  COMMENT '',
+  INDEX `fk_professor_usuario1_idx` (`usuario_idusuario` ASC)  COMMENT '',
+  INDEX `fk_professor_matricula1_idx` (`matricula_idmatricula` ASC)  COMMENT '',
+  CONSTRAINT `fk_professor_pessoa1`
+    FOREIGN KEY (`pessoa_idpessoa`)
+    REFERENCES `provaonline`.`pessoa` (`idpessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_professor_usuario1`
+    FOREIGN KEY (`usuario_idusuario`)
+    REFERENCES `provaonline`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_professor_matricula1`
+    FOREIGN KEY (`matricula_idmatricula`)
+    REFERENCES `provaonline`.`matricula` (`idmatricula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
-insert into cursando values (1,1,1,1,null);
-insert into cursando values (2,1,1,2,null);
+-- -----------------------------------------------------
+-- Table `provaonline`.`provas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`provas` (
+  `idprovas` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `nome` VARCHAR(45) NULL COMMENT '',
+  `introducao` TEXT(500) NULL COMMENT '',
+  `inicio` DATE NULL COMMENT '',
+  `termino` DATE NULL COMMENT '',
+  `turma_idturma` INT NOT NULL COMMENT '',
+  `disciplina_iddisciplina` INT NOT NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`idprovas`)  COMMENT '',
+  INDEX `fk_provas_turma1_idx` (`turma_idturma` ASC)  COMMENT '',
+  INDEX `fk_provas_disciplina1_idx` (`disciplina_iddisciplina` ASC)  COMMENT '',
+  CONSTRAINT `fk_provas_turma1`
+    FOREIGN KEY (`turma_idturma`)
+    REFERENCES `provaonline`.`turma` (`idturma`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_provas_disciplina1`
+    FOREIGN KEY (`disciplina_iddisciplina`)
+    REFERENCES `provaonline`.`disciplina` (`iddisciplina`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
--- Tabelas com provas relacionadas
-create table provas
-(
-	idprova int primary key auto_increment,
-	disciplina int,
-	foreign key (disciplina) references disciplinas(iddisciplina),
-	idturma int,
-	foreign key (idturma) references turma(idturma),
-	inicio date,
-	termino date,
-  data_exclusao varchar(100) default null
-);
+-- -----------------------------------------------------
+-- Table `provaonline`.`perguntas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`perguntas` (
+  `idperguntas` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `titulo` VARCHAR(100) NULL COMMENT '',
+  `pergunta` TEXT(500) NULL COMMENT '',
+  `respostaA` VARCHAR(100) NULL COMMENT '',
+  `respostaB` VARCHAR(150) NULL COMMENT '',
+  `respostaC` VARCHAR(150) NULL COMMENT '',
+  `respostaD` VARCHAR(150) BINARY NULL COMMENT '',
+  `respostaCorreta` CHAR(1) NULL COMMENT '',
+  `data_exclusao` DATETIME NULL DEFAULT NULL COMMENT '',
+  PRIMARY KEY (`idperguntas`)  COMMENT '')
+ENGINE = InnoDB;
 
--- idProva,disciplina,idturma.
-insert into provas values (1,1,1,'06/09/2015','07/09/2015',null);
 
--- Tabelas com perguntas relacionadas as provas
-create table perguntas
-(
-	idPergunta int primary key auto_increment,
-  idprova int not null,
-  foreign key(idprova) references provas(idprova),
-	pergunta varchar(1000) not null,
-	resposta01 varchar(100),
-	resposta02 varchar(100),
-	resposta03 varchar(100),
-	resposta04 varchar(100),
-	respostaCorreta char(1), -- Aqui deve entrar, A,B,C,D,
-  data_exclusao varchar(100) default null
-);
+-- -----------------------------------------------------
+-- Table `provaonline`.`cursando`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`cursando` (
+  `Aluno_idAluno` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `disciplina_iddisciplina` INT NOT NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`Aluno_idAluno`, `disciplina_iddisciplina`)  COMMENT '',
+  INDEX `fk_Aluno_has_turma_Aluno1_idx` (`Aluno_idAluno` ASC)  COMMENT '',
+  INDEX `fk_Cursando_disciplina1_idx` (`disciplina_iddisciplina` ASC)  COMMENT '',
+  CONSTRAINT `fk_Aluno_has_turma_Aluno1`
+    FOREIGN KEY (`Aluno_idAluno`)
+    REFERENCES `provaonline`.`aluno` (`idaluno`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Cursando_disciplina1`
+    FOREIGN KEY (`disciplina_iddisciplina`)
+    REFERENCES `provaonline`.`disciplina` (`iddisciplina`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-insert into perguntas values(1,1,'Quem descobriu o brasil?','Pedro','Joao','Matheus','Teste','A',null);
+
+-- -----------------------------------------------------
+-- Table `provaonline`.`disciplinas_professor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`disciplinas_professor` (
+  `professor_idprofessor` INT NOT NULL COMMENT '',
+  `disciplina_iddisciplina` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`professor_idprofessor`, `disciplina_iddisciplina`)  COMMENT '',
+  INDEX `fk_professor_has_disciplina_disciplina1_idx` (`disciplina_iddisciplina` ASC)  COMMENT '',
+  INDEX `fk_professor_has_disciplina_professor1_idx` (`professor_idprofessor` ASC)  COMMENT '',
+  CONSTRAINT `fk_professor_has_disciplina_professor1`
+    FOREIGN KEY (`professor_idprofessor`)
+    REFERENCES `provaonline`.`professor` (`idprofessor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_professor_has_disciplina_disciplina1`
+    FOREIGN KEY (`disciplina_iddisciplina`)
+    REFERENCES `provaonline`.`disciplina` (`iddisciplina`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `provaonline`.`matriculados`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`matriculados` (
+  `matricula_idmatricula` INT NOT NULL COMMENT '',
+  `turma_idturma` INT NOT NULL COMMENT '',
+  `data_exclusao` DATETIME NULL COMMENT '',
+  PRIMARY KEY (`matricula_idmatricula`, `turma_idturma`)  COMMENT '',
+  INDEX `fk_matricula_has_turma_turma1_idx` (`turma_idturma` ASC)  COMMENT '',
+  INDEX `fk_matricula_has_turma_matricula1_idx` (`matricula_idmatricula` ASC)  COMMENT '',
+  CONSTRAINT `fk_matricula_has_turma_matricula1`
+    FOREIGN KEY (`matricula_idmatricula`)
+    REFERENCES `provaonline`.`matricula` (`idmatricula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_matricula_has_turma_turma1`
+    FOREIGN KEY (`turma_idturma`)
+    REFERENCES `provaonline`.`turma` (`idturma`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `provaonline`.`questoes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `provaonline`.`questoes` (
+  `provas_idprovas` INT NOT NULL COMMENT '',
+  `perguntas_idperguntas` INT NOT NULL COMMENT '',
+  `notas` FLOAT(5) NULL COMMENT '',
+  PRIMARY KEY (`provas_idprovas`, `perguntas_idperguntas`)  COMMENT '',
+  INDEX `fk_provas_has_Questoes_Questoes1_idx` (`perguntas_idperguntas` ASC)  COMMENT '',
+  INDEX `fk_provas_has_Questoes_provas1_idx` (`provas_idprovas` ASC)  COMMENT '',
+  CONSTRAINT `fk_provas_has_Questoes_provas1`
+    FOREIGN KEY (`provas_idprovas`)
+    REFERENCES `provaonline`.`provas` (`idprovas`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_provas_has_Questoes_Questoes1`
+    FOREIGN KEY (`perguntas_idperguntas`)
+    REFERENCES `provaonline`.`perguntas` (`idperguntas`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

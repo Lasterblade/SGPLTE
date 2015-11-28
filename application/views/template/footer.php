@@ -175,110 +175,95 @@
       <div class='control-sidebar-bg'></div>
     </div><!-- ./wrapper -->
 
+ 
     <!-- jQuery 2.1.4 -->
-    <script src="<?php echo base_url('public/plugins/jQuery/jQuery-2.1.4.min.js')?>"></script>
-    <!-- jQuery UI 1.11.2 -->
-    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button);
-    </script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="<?php echo base_url('public/bootstrap/js/bootstrap.min.js')?>" type="text/javascript"></script>    
-    <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="<?php echo base_url('public/plugins/morris/morris.min.js')?>" type="text/javascript"></script>
-    <!-- Sparkline -->
-    <script src="<?php echo base_url('public/plugins/sparkline/jquery.sparkline.min.js')?>" type="text/javascript"></script>
-    <!-- jvectormap -->
-    <script src="<?php echo base_url('public/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('public/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')?>" type="text/javascript"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="<?php echo base_url('public/plugins/knob/jquery.knob.js')?>" type="text/javascript"></script>
-    <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url('public/plugins/daterangepicker/daterangepicker.js')?>" type="text/javascript"></script>
-    <!-- datepicker -->
-    <script src="<?php echo base_url('public/plugins/datepicker/bootstrap-datepicker.js')?>" type="text/javascript"></script>
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="<?php echo base_url('public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')?>" type="text/javascript"></script>
-    <!-- Slimscroll -->
-    <script src="<?php echo base_url('public/plugins/slimScroll/jquery.slimscroll.min.js')?>" type="text/javascript"></script>
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="<?php echo base_url('public/bootstrap/js/bootstrap.min.js')?>"></script>
+    <!-- Select2 -->
+    <script src="<?php echo base_url('public/plugins/select2/select2.full.min.js')?>"></script>
+    <!-- InputMask -->
+    <script src="<?php echo base_url('public/plugins/input-mask/jquery.inputmask.js')?>"></script>
+    <script src="<?php echo base_url('public/plugins/input-mask/jquery.inputmask.date.extensions.js')?>"></script>
+    <script src="<?php echo base_url('public/plugins/input-mask/jquery.inputmask.extensions.js')?>"></script>
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="<?php echo base_url('public/plugins/daterangepicker/daterangepicker.js')?>"></script>
+    <!-- bootstrap color picker -->
+    <script src="<?php echo base_url('public/plugins/colorpicker/bootstrap-colorpicker.min.js')?>"></script>
+    <!-- bootstrap time picker -->
+    <script src="<?php echo base_url('public/plugins/timepicker/bootstrap-timepicker.min.js')?>"></script>
+    <!-- SlimScroll 1.3.0 -->
+    <script src="<?php echo base_url('public/plugins/slimScroll/jquery.slimscroll.min.js')?>"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="<?php echo base_url('public/plugins/iCheck/icheck.min.js')?>"></script>
     <!-- FastClick -->
-    <script src='<?php echo base_url('public/plugins/fastclick/fastclick.min.js')?>'></script>
+    <script src="<?php echo base_url('public/plugins/fastclick/fastclick.min.js')?>"></script>
     <!-- AdminLTE App -->
-    <script src="<?php echo base_url('public/dist/js/app.min.js')?>" type="text/javascript"></script>    
-    
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="<?php echo base_url('public/dist/js/pages/dashboard.js')?>" type="text/javascript"></script>    
-    
+    <script src="<?php echo base_url('public/dist/js/app.min.js')?>"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="<?php echo base_url('public/dist/js/demo.js')?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('public/dist/js/demo.js')?>"></script>
     
+    <!-- jQuery CEP Plugin  -->
+    <script src="<?php echo base_url('public/plugins/cep/jquery.cep.js')?>"></script>
+    <!-- CKEDITOR -->
+    <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+    
+    
+  
+    <!-- Page script -->
     <script>
-    
       $(function () {
-        //Initialize Select2 Elements
-        $(".select2").select2();
-
+     
         //Datemask dd/mm/yyyy
         $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
         //Datemask2 mm/dd/yyyy
         $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
         //Money Euro
         $("[data-mask]").inputmask();
-
-        //Date range picker
-        $('#reservation').daterangepicker();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-            {
-              ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-              },
-              startDate: moment().subtract(29, 'days'),
-              endDate: moment()
-            },
-        function (start, end) {
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
-        );
-
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        
+          //iCheck for checkbox and radio inputs
+        $('input[type="radio"].minimal').iCheck({
           checkboxClass: 'icheckbox_minimal-blue',
           radioClass: 'iradio_minimal-blue'
         });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-          checkboxClass: 'icheckbox_minimal-red',
-          radioClass: 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-          checkboxClass: 'icheckbox_flat-green',
-          radioClass: 'iradio_flat-green'
-        });
-
-        //Colorpicker
-        $(".my-colorpicker1").colorpicker();
-        //color picker with addon
-        $(".my-colorpicker2").colorpicker();
-
-        //Timepicker
-        $(".timepicker").timepicker({
-          showInputs: false
-        });
+        
       });
+      
+
+	 </script>	
+   
+  <script type="text/javascript">
+      $(document).ready(function() {
+          $('input#cep').cep({
+          // "done" é o nome da opção do seu callback
+          // Funciona da mesma forma que o método 1
+          // mas aqui você pode adicionar outras opções também
+          done: function(endereco) {
+              console.log('O endereço encontrado foi: ', endereco);
+             alert("Náo Foi Possivel Pesquisar o Cep");
+          },
+          
+          // Outras opções, caso você queira
+          autofill: false,
+          cache: false
+      });
+      $('#cep').focus();
+      });
+    </script>
+    <script>$(function () { CKEDITOR.replaceAll(); $(".textarea").wysihtml5();});</script>
     
-  </script>
-    
+ <script>
+            var disciplina = $('select[name="disciplina"] option');
+            $('select[name="turma"]').on('change', function () {
+                var turma = this.value;
+                var novoSelect = disciplina.filter(function () {
+                    return $(this).data('turma') == turma;
+                });
+                $('select[name="disciplina"]').html(novoSelect);
+            });
+        </script>
+
   </body>
 </html>

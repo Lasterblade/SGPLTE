@@ -1,78 +1,89 @@
 <?php if (! defined('BASEPATH')) exit('No direct Script access allowed');
 
-class Periodo extends CI_Controller 
+class periodo extends CI_Controller 
 {
 	public function __construct()
 	{
 	    parent::__construct();
+	   // $this->load->helper('');
+	  //$this->load->library('form_validation');
+	  $this->load->model('Periodo_model');
+	  $this->load->model("Usuario_model");
+	  $this->Usuario_model->logged();
 	}
 	public function index()
 	{
-		$this->load->view('/template/header');
-	    $this->load->view('/Paginas/consultar_Periodo');
-	    $this->load->view('/template/footer');
-	}
-	
-	public function cadastrar_periodo()
-	{
-		$this->load->view('/template/header');
-	    $this->load->view('/Paginas/cadastrar_periodo');
-	    $this->load->view('/template/footer');
-	}
-	
-	public function insert()
-	{
-		$this->load->model('Periodo_model');
 		
-		//Name, Label, condição
+		$data['conteudo'] = $this->Periodo_model->Consultar();
+	    $data['content'] = 'periodo/consulta';
+	    
+		$this->load->view('/template/header_data');
+		$this->load->view('/template/aside');
+	    $this->load->view('periodo',$data);
+	    $this->load->view('/template/footer_data');
+	}
+	public function insert()
+	{	
+	 	
 		$this->form_validation->set_rules('descricao','Descrição','required');
-
+		
 		if ($this->form_validation->run() == FALSE)
 		{
+			$data['content'] = 'periodo/form';
+			
 			$this->load->view('/template/header');
-	        $this->load->view('/Paginas/cadastrar_periodo');
+			$this->load->view('/template/aside');
+			$this->load->view('periodo',$data);
 			$this->load->view('/template/footer');
+			
 		}
 		else{
-		
-			$objPeriodo = new Periodo_model();
-			$objPeriodo->SetDescricao($this->input->post('descricao'));
-			$objPeriodo->Cadastrar();
+			if($this->input->post()){
+				
+				$id = addslashes($this->input->post('id'));
+				$descricao = addslashes($this->input->post('descricao'));
+				
+				$this->Periodo_model->Setidperiodo($id);
+				$this->Periodo_model->Setdescricao($descricao);
+				$this->Periodo_model->inserir();
 			
-			echo("<script>alert('Operação realizada com sucesso!')</script>");
-	
-			$this->load->view('/template/header');
-		    $this->load->view('/Paginas/cadastrar_periodo');
-			$this->load->view('/template/footer');
-		
+			}
 		}
+		
+		
+	}
+	public function update($id){
+		
+		$this->form_validation->set_rules('descricao','Descrição','required');
+		
+		if ($this->form_validation->run() == FALSE)
+		{
+			$data['content'] = 'periodo/update';
+			$data['editar']= $this->Periodo_model->consultar_id($id);	
+			
+			$this->load->view('/template/header');
+			$this->load->view('/template/aside');
+			$this->load->view('periodo',$data);
+			$this->load->view('/template/footer');
+			
+		}
+		else{
+
+			$descricao = addslashes($this->input->post('descricao'));
+			
+			$this->Periodo_model->Setidperiodo($id);
+			$this->Periodo_model->Setdescricao($descricao);
+			$this->Periodo_model->update();
+			
+		}
+		
+	}
+	public function excluir($id){
+			$data_exclusao =  date('Y-m-d H:i:s');
+			$this->Periodo_model->Setidperiodo($id);	
+			$this->Periodo_model->SetDataExclusao($data_exclusao);
+			$this->Periodo_model->excluir();
+			
 	}
 	
-	public function consultar_periodo()
-	{
-		$this->load->model('Periodo_model');
-		$objPeriodo = new Periodo_model();
-	    $data['conteudo'] = $objPeriodo->consultar();
-			
-		$this->load->view('/template/header');
-	    $this->load->view('/Paginas/consultar_periodo',$data);
-	    $this->load->view('/template/footer');	
-	}
-	
-	public function Delete($idperiodo)
-	{
-		$this->load->model('Periodo_model');
-		
-		$objPeriodo = new Periodo_model();
-		$objPeriodo->SetidPeriodo($idperiodo);
-		$objPeriodo->Excluir();
-		
-		echo("<script>alert('Período excluido com sucesso!')</script>");
-		
-	    $data['conteudo'] = $objPeriodo->consultar();
-			
-		$this->load->view('/template/header');
-	    $this->load->view('/Paginas/consultar_periodo',$data);
-	    $this->load->view('/template/footer');	
-	}
 }
