@@ -4,7 +4,7 @@ Informações
 *******************
 
 Sistema Criado para gerenciamento de provas online, para dinamismo do <br />
-gerenciamento de tarefas e provas atribuidasa alunos de intituições publicas ou privadas
+gerenciamento de tarefas e provas atribuidas a alunos de intituições publicas ou privadas
 
 http://www.revillweb.com/tutorials/codeigniter-tutorial-learn-codeigniter-in-40-minutes/
 https://mega.nz/#!t9QD2CIY!ZHllni_b43n5k0aaKkBt2XUdulgx7NKP1PNObUik7bI
